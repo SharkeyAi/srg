@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sharkey Restaurant Group — The Google of Restaurants</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0a1628;
+  --navy2: #0f2040;
+  --gold: #e8a020;
+  --gold2: #f5c04a;
+  --blue: #1a6fd4;
+  --blue2: #2484f5;
+  --white: #ffffff;
+  --off: #f7f6f3;
+  --gray: #8899aa;
+  --border: rgba(255,255,255,0.1);
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--navy);color:var(--white);overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,22,40,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;}
+.nav-brand{display:flex;align-items:center;gap:12px;}
+.nav-logo{width:38px;height:38px;background:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;letter-spacing:.5px;}
+.nav-brand-text{font-family:var(--font-display);font-size:18px;font-weight:600;letter-spacing:.3px;}
+.nav-brand-sub{font-size:10px;color:var(--gray);letter-spacing:1px;text-transform:uppercase;margin-top:1px;}
+.nav-links{display:flex;gap:4px;}
+.nav-btn{padding:6px 14px;border-radius:6px;font-size:13px;color:var(--gray);cursor:pointer;border:none;background:transparent;font-family:var(--font-body);transition:all .2s;letter-spacing:.2px;}
+.nav-btn:hover{color:var(--white);background:rgba(255,255,255,0.07);}
+.nav-btn.active{color:var(--white);background:var(--blue);}
+.nav-cta{padding:7px 18px;background:var(--gold);color:var(--navy);border:none;border-radius:6px;font-size:13px;font-weight:500;cursor:pointer;font-family:var(--font-body);}
+
+/* PAGES */
+.page{display:none;min-height:100vh;padding-top:64px;}
+.page.active{display:block;}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%, rgba(26,111,212,0.12) 0%, transparent 70%);pointer-events:none;}
+.hero-bg2{position:absolute;inset:0;background:radial-gradient(ellipse 40% 40% at 80% 80%, rgba(232,160,32,0.06) 0%, transparent 60%);pointer-events:none;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(26,111,212,0.15);border:1px solid rgba(26,111,212,0.3);padding:6px 16px;border-radius:20px;font-size:12px;color:#7ab4f5;letter-spacing:1px;text-transform:uppercase;margin-bottom:28px;}
+.hero-dot{width:6px;height:6px;background:#7ab4f5;border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+.hero-title{font-family:var(--font-display);font-size:clamp(48px,8vw,96px);font-weight:600;line-height:1.05;margin-bottom:12px;letter-spacing:-.5px;}
+.hero-title em{color:var(--gold);font-style:italic;}
+.hero-sub{font-size:16px;color:var(--gray);max-width:480px;line-height:1.7;margin-bottom:40px;}
+.hero-stats{display:flex;gap:48px;margin-bottom:44px;flex-wrap:wrap;justify-content:center;}
+.hstat-num{font-family:var(--font-display);font-size:40px;font-weight:600;color:var(--white);}
+.hstat-label{font-size:11px;color:var(--gray);text-transform:uppercase;letter-spacing:1px;margin-top:2px;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+.btn-gold{padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer;font-family:var(--font-body);transition:transform .15s;}
+.btn-gold:hover{transform:translateY(-1px);}
+.btn-ghost{padding:12px 28px;background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.25);border-radius:8px;font-size:14px;cursor:pointer;font-family:var(--font-body);transition:all .15s;}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.5);}
+.scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--gray);font-size:11px;letter-spacing:1px;text-transform:uppercase;}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,transparent,var(--gray));animation:scrollpulse 2s infinite;}
+@keyframes scrollpulse{0%{opacity:0;transform:scaleY(0);transform-origin:top;}50%{opacity:1;}100%{opacity:0;transform:scaleY(1);transform-origin:top;}}
+
+/* SECTIONS */
+.section{padding:80px 32px;max-width:1200px;margin:0 auto;}
+.section-eyebrow{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+.section-title{font-family:var(--font-display);font-size:clamp(32px,4vw,52px);font-weight:600;line-height:1.1;margin-bottom:12px;}
+.section-sub{font-size:15px;color:var(--gray);line-height:1.7;max-width:560px;margin-bottom:48px;}
+.divider{height:1px;background:var(--border);margin:0 32px;}
+
+/* CARDS */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:var(--border);}
+.card-grid-3{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1px;background:var(--border);}
+.card{background:var(--navy2);padding:28px;transition:background .2s;}
+.card:hover{background:#132035;}
+.card-icon{font-size:24px;margin-bottom:16px;}
+.card-title{font-family:var(--font-display);font-size:20px;font-weight:600;margin-bottom:8px;}
+.card-desc{font-size:13px;color:var(--gray);line-height:1.7;}
+.card-tag{display:inline-block;font-size:10px;letter-spacing:.8px;text-transform:uppercase;padding:3px 10px;border-radius:3px;margin-bottom:12px;font-weight:500;}
+.tag-core{background:rgba(26,111,212,0.2);color:#7ab4f5;}
+.tag-premium{background:rgba(232,160,32,0.2);color:#f5c04a;}
+.tag-viral{background:rgba(211,82,126,0.2);color:#f09fbf;}
+.tag-cuisine{background:rgba(29,158,117,0.2);color:#6dd9b5;}
+.tag-experience{background:rgba(127,119,221,0.2);color:#b3aef5;}
+.card-meta{display:flex;gap:20px;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);}
+.card-meta-item{font-size:12px;}
+.card-meta-label{color:var(--gray);}
+.card-meta-val{color:var(--white);font-weight:500;margin-top:2px;}
+.card-link{font-size:12px;color:var(--blue2);cursor:pointer;margin-top:14px;display:inline-block;}
+.card-link:hover{text-decoration:underline;}
+
+/* FILTER */
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;}
+.filt{padding:6px 16px;border-radius:20px;font-size:12px;border:1px solid var(--border);background:transparent;cursor:pointer;color:var(--gray);font-family:var(--font-body);transition:all .2s;}
+.filt.active,.filt:hover{background:var(--blue);color:var(--white);border-color:var(--blue);}
+
+/* CONCEPT DETAIL */
+.detail-view{display:none;}
+.detail-view.active{display:block;}
+.back-link{display:inline-flex;align-items:center;gap:8px;color:var(--gray);font-size:13px;cursor:pointer;margin-bottom:32px;border:none;background:transparent;font-family:var(--font-body);}
+.back-link:hover{color:var(--white);}
+.detail-header{background:var(--navy2);border:1px solid var(--border);border-radius:12px;padding:40px;margin-bottom:24px;}
+.detail-name{font-family:var(--font-display);font-size:clamp(28px,4vw,48px);font-weight:600;margin-bottom:10px;}
+.detail-desc{font-size:15px;color:var(--gray);line-height:1.7;max-width:700px;margin-bottom:28px;}
+.detail-stats{display:flex;gap:40px;flex-wrap:wrap;}
+.dstat-val{font-family:var(--font-display);font-size:26px;font-weight:600;color:var(--gold);}
+.dstat-label{font-size:11px;color:var(--gray);text-transform:uppercase;letter-spacing:.8px;margin-top:2px;}
+.detail-body{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:640px){.detail-body{grid-template-columns:1fr;}}
+.detail-card{background:var(--navy2);border:1px solid var(--border);border-radius:10px;padding:24px;}
+.detail-card-title{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.detail-card-body{font-size:14px;color:var(--gray);line-height:1.7;}
+
+/* BUILDING LAYOUT */
+.building-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-bottom:32px;}
+.bcard{background:var(--navy2);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.bcard-header{background:linear-gradient(135deg,#0f2040,#0a1628);padding:18px 20px;border-bottom:1px solid var(--border);}
+.bcard-num{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:4px;}
+.bcard-name{font-family:var(--font-display);font-size:17px;font-weight:600;margin-bottom:2px;}
+.bcard-addr{font-size:12px;color:var(--gray);}
+.bcard-sf{font-size:11px;color:var(--gold2);margin-top:4px;}
+.bcard-body{padding:18px 20px;}
+.floor{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05);}
+.floor:last-child{border-bottom:none;}
+.floor-label{font-size:10px;letter-spacing:.8px;text-transform:uppercase;color:var(--blue2);min-width:64px;padding-top:3px;font-weight:500;}
+.floor-items{display:flex;flex-wrap:wrap;gap:5px;}
+.ftag{font-size:11px;padding:2px 8px;border-radius:3px;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.7);}
+.ftag-gold{background:rgba(232,160,32,0.15);color:#f5c04a;}
+.ftag-blue{background:rgba(26,111,212,0.15);color:#7ab4f5;}
+.ftag-green{background:rgba(29,158,117,0.15);color:#6dd9b5;}
+.ftag-purple{background:rgba(127,119,221,0.15);color:#b3aef5;}
+.ftag-note{font-size:11px;color:var(--blue2);font-style:italic;}
+
+/* TEAM */
+.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
+.tcard{background:var(--navy2);border:1px solid var(--border);border-radius:10px;padding:20px;display:flex;gap:14px;align-items:flex-start;}
+.tavatar{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;flex-shrink:0;}
+.tname{font-size:14px;font-weight:500;margin-bottom:2px;}
+.trole{font-size:11px;color:var(--blue2);letter-spacing:.3px;margin-bottom:6px;}
+.tnote{font-size:12px;color:var(--gray);line-height:1.6;}
+
+/* METRICS */
+.metric-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:32px;}
+.mcard{background:var(--navy2);padding:20px;}
+.mcard-label{font-size:11px;letter-spacing:.8px;text-transform:uppercase;color:var(--gray);margin-bottom:6px;}
+.mcard-val{font-family:var(--font-display);font-size:28px;font-weight:600;color:var(--white);}
+.mcard-sub{font-size:11px;color:var(--gray);margin-top:2px;}
+
+/* ALLOC */
+.alloc-item{margin-bottom:14px;}
+.alloc-row{display:flex;justify-content:space-between;font-size:13px;color:var(--gray);margin-bottom:5px;}
+.alloc-bar{height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;}
+.alloc-fill{height:100%;border-radius:2px;}
+
+/* INVEST */
+.invest-hero{background:linear-gradient(135deg,var(--navy2),#0a1830);border:1px solid rgba(26,111,212,0.3);border-radius:12px;padding:36px;margin-bottom:24px;}
+.invest-amt{font-family:var(--font-display);font-size:clamp(36px,5vw,64px);font-weight:600;color:var(--gold);margin-bottom:6px;}
+.invest-sub{font-size:14px;color:var(--gray);max-width:500px;line-height:1.7;}
+.returns-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:28px;}
+.rcard{background:rgba(26,111,212,0.1);border:1px solid rgba(26,111,212,0.25);border-radius:10px;padding:20px;}
+.rcard-pct{font-family:var(--font-display);font-size:36px;font-weight:600;color:#7ab4f5;margin-bottom:4px;}
+.rcard-label{font-size:12px;color:var(--gray);line-height:1.5;}
+
+/* ACADEMY */
+.prog-bar-wrap{margin-top:14px;}
+.prog-label-row{display:flex;justify-content:space-between;font-size:11px;color:var(--gray);margin-bottom:5px;}
+.prog-bar{height:3px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;}
+.prog-fill{height:100%;border-radius:2px;}
+
+/* IMPACT TABLE */
+.impact-table{width:100%;border-collapse:collapse;font-size:13px;}
+.impact-table th{text-align:left;padding:10px 12px;color:var(--gray);font-weight:500;font-size:11px;letter-spacing:.8px;text-transform:uppercase;border-bottom:1px solid var(--border);}
+.impact-table td{padding:12px;color:var(--white);border-bottom:1px solid rgba(255,255,255,0.04);}
+.impact-table td:not(:first-child){text-align:center;color:var(--gray);}
+
+/* BADGES */
+.badge-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;}
+.badge{padding:8px 14px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:6px;font-size:12px;color:var(--gray);}
+
+/* FOOTER */
+footer{background:var(--navy2);border-top:1px solid var(--border);padding:40px 32px;text-align:center;}
+.footer-logo{font-family:var(--font-display);font-size:24px;font-weight:600;margin-bottom:6px;}
+.footer-tagline{font-size:12px;color:var(--gray);letter-spacing:1px;text-transform:uppercase;margin-bottom:20px;}
+.footer-note{font-size:12px;color:rgba(136,153,170,0.5);}
+
+/* MOBILE */
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-links{display:none;}
+  .mobile-nav{display:flex;overflow-x:auto;gap:4px;padding:12px 16px;background:rgba(10,22,40,0.98);border-bottom:1px solid var(--border);position:sticky;top:64px;z-index:999;}
+  .section{padding:60px 16px;}
+  .building-grid{grid-template-columns:1fr;}
+  .hero-stats{gap:28px;}
+}
+@media(min-width:769px){.mobile-nav{display:none;}}
+.mobile-btn{padding:5px 12px;border-radius:20px;font-size:12px;border:1px solid var(--border);background:transparent;cursor:pointer;color:var(--gray);font-family:var(--font-body);white-space:nowrap;}
+.mobile-btn.active{background:var(--blue);color:var(--white);border-color:var(--blue);}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.fade-up{animation:fadeUp .5s ease forwards;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">SRG</div>
+    <div>
+      <div class="nav-brand-text">Sharkey Restaurant Group</div>
+      <div class="nav-brand-sub">The Google of Restaurants</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <button class="nav-btn active" onclick="showPage('home')">Overview</button>
+    <button class="nav-btn" onclick="showPage('campus')">Campus</button>
+    <button class="nav-btn" onclick="showPage('concepts')">Concepts</button>
+    <button class="nav-btn" onclick="showPage('team')">Team</button>
+    <button class="nav-btn" onclick="showPage('financials')">Financials</button>
+    <button class="nav-btn" onclick="showPage('academy')">Academy</button>
+    <button class="nav-btn" onclick="showPage('invest')">Invest</button>
+  </div>
+  <button class="nav-cta" onclick="showPage('invest')">Invest Now</button>
+</nav>
+
+<div class="mobile-nav" id="mobile-nav">
+  <button class="mobile-btn active" onclick="showPage('home')">Overview</button>
+  <button class="mobile-btn" onclick="showPage('campus')">Campus</button>
+  <button class="mobile-btn" onclick="showPage('concepts')">Concepts</button>
+  <button class="mobile-btn" onclick="showPage('team')">Team</button>
+  <button class="mobile-btn" onclick="showPage('financials')">Financials</button>
+  <button class="mobile-btn" onclick="showPage('academy')">Academy</button>
+  <button class="mobile-btn" onclick="showPage('invest')">Invest</button>
+</div>
+
+<!-- HOME -->
+<div id="page-home" class="page active">
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-bg2"></div>
+    <div class="hero-eyebrow"><span class="hero-dot"></span>Atlanta, Georgia &mdash; Minority-Owned</div>
+    <h1 class="hero-title">Before SRG, there were<br><em>restaurant brands.</em></h1>
+    <p class="hero-sub">Now we've come to change the culture. 20+ original concepts built for scale, equity, and franchising — from one flagship campus in Atlanta.</p>
+    <div class="hero-stats">
+      <div><div class="hstat-num">20+</div><div class="hstat-label">Original Concepts</div></div>
+      <div><div class="hstat-num">$18M</div><div class="hstat-label">Invest Atlanta Ask</div></div>
+      <div><div class="hstat-num">37+</div><div class="hstat-label">Years Experience</div></div>
+      <div><div class="hstat-num">4</div><div class="hstat-label">Building Campus</div></div>
+    </div>
+    <div class="hero-btns">
+      <button class="btn-gold" onclick="showPage('invest')">Investor Information</button>
+      <button class="btn-ghost" onclick="showPage('campus')">View Campus</button>
+      <button class="btn-ghost" onclick="showPage('concepts')">Explore Concepts</button>
+    </div>
+    <div class="scroll-hint"><div class="scroll-line"></div></div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section">
+    <div class="section-eyebrow">What We're Building</div>
+    <h2 class="section-title">A restaurant group<br>unlike anything before it.</h2>
+    <p class="section-sub">SRG combines fine dining, fast-casual, events, technology, logistics, and education under one roof — designed for franchising from Day 1.</p>
+    <div class="metric-row">
+      <div class="mcard"><div class="mcard-label">Year 1 Revenue</div><div class="mcard-val">$10M+</div><div class="mcard-sub">5 launch brands</div></div>
+      <div class="mcard"><div class="mcard-label">Year 3 Revenue</div><div class="mcard-val">$18M+</div><div class="mcard-sub">Full portfolio active</div></div>
+      <div class="mcard"><div class="mcard-label">Year 5 Revenue</div><div class="mcard-val">$26M+</div><div class="mcard-sub">Franchise scale</div></div>
+      <div class="mcard"><div class="mcard-label">Campus Size</div><div class="mcard-val">66,600+</div><div class="mcard-sub">sq ft, 4 buildings</div></div>
+      <div class="mcard"><div class="mcard-label">Jobs Created</div><div class="mcard-val">300+</div><div class="mcard-sub">By Year 5</div></div>
+    </div>
+    <div class="card-grid-3">
+      <div class="card">
+        <div class="card-icon">🍽</div>
+        <div class="card-title">Multi-Brand Ecosystem</div>
+        <div class="card-desc">20+ original concepts spanning fast-casual, fine dining, breakfast, events, and ghost kitchens — all under one corporate infrastructure on the Whitehall Street campus.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚙️</div>
+        <div class="card-title">Tech-Forward Operations</div>
+        <div class="card-desc">Sharkey AI, Sharkey Robotics, and CrunchTime integration power inventory, labor, forecasting, and franchise management. Dedicated tech building on campus.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏛</div>
+        <div class="card-title">Community Rooted</div>
+        <div class="card-desc">Sharkey Academy provides culinary, business, and coding education to underserved youth — directly feeding the SRG workforce pipeline from the same campus.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📺</div>
+        <div class="card-title">Sharkey Media</div>
+        <div class="card-desc">In-house media division creating documentaries, commercials, and daily behind-the-scenes content. Full production studio on campus targeting Netflix and Tyler Perry Studios.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🚚</div>
+        <div class="card-title">Sharkey Logistics</div>
+        <div class="card-desc">Dedicated distribution and supply chain operation housed on campus. Serves all SRG concepts and future franchises with AI-powered inventory and vendor management.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <div class="card-title">Franchise Ready</div>
+        <div class="card-desc">Soul Bowl and Rise & Shine are franchise-ready from Day 1. Franchise sales projected within 18 months of launch. Each new location employs 20–30 staff.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CAMPUS -->
+<div id="page-campus" class="page">
+  <div class="section">
+    <div class="section-eyebrow">Whitehall Street Assemblage</div>
+    <h2 class="section-title">Four buildings.<br>One unified campus.</h2>
+    <p class="section-sub">443–479 Whitehall St SW, Atlanta, GA 30303. 2.31 acres, 600ft of street frontage, zoned I-1. Near I-20 in the heart of Atlanta's HBCU corridor.</p>
+
+    <div class="metric-row">
+      <div class="mcard"><div class="mcard-label">Total Sq Footage</div><div class="mcard-val">66,614</div><div class="mcard-sub">Across 4 buildings</div></div>
+      <div class="mcard"><div class="mcard-label">Lot Size</div><div class="mcard-val">2.31 ac</div><div class="mcard-sub">600ft street frontage</div></div>
+      <div class="mcard"><div class="mcard-label">Zoning</div><div class="mcard-val">I-1</div><div class="mcard-sub">Industrial Atlanta</div></div>
+      <div class="mcard"><div class="mcard-label">Entrances</div><div class="mcard-val">4</div><div class="mcard-sub">Separate per building</div></div>
+    </div>
+
+    <div class="building-grid">
+      <div class="bcard">
+        <div class="bcard-header">
+          <div class="bcard-num">Building 1</div>
+          <div class="bcard-name">Main Restaurant Hub</div>
+          <div class="bcard-addr">479 Whitehall St</div>
+          <div class="bcard-sf">42,480 sf &mdash; 4 Levels Including Basement</div>
+        </div>
+        <div class="bcard-body">
+          <div class="floor">
+            <div class="floor-label">1st Floor</div>
+            <div class="floor-items">
+              <span class="ftag ftag-blue">Soul Bowl</span>
+              <span class="ftag ftag-blue">Rise & Shine</span>
+              <span class="ftag ftag-blue">Stackery</span>
+              <span class="ftag">Shared Kitchen</span>
+              <span class="ftag">Luxury Foyer</span>
+            </div>
+          </div>
+          <div class="floor">
+            <div class="floor-label">2nd Floor</div>
+            <div class="floor-items">
+              <span class="ftag ftag-gold">Chef Sharkey's Grand Ballroom</span>
+              <span class="ftag">Bride & Groom Suites</span>
+            </div>
+          </div>
+          <div class="floor">
+            <div class="floor-label">3rd Floor</div>
+            <div class="floor-items">
+              <span class="ftag ftag-gold">Chef Sharkey's</span>
+              <span class="ftag">Public Dining</span>
+              <span class="ftag">Members Area</span>
+              <span class="ftag">Kitchen Stadium</span>
+            </div>
+          </div>
+          <div class="floor">
+            <div class="floor-label">Basement</div>
+            <div class="floor-items"><span class="ftag-note">Reserved for future use</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bcard">
+        <div class="bcard-header">
+          <div class="bcard-num">Building 2</div>
+          <div class="bcard-name">Logistics Hub</div>
+          <div class="bcard-addr">443 Whitehall St</div>
+          <div class="bcard-sf">9,180 sf</div>
+        </div>
+        <div class="bcard-body">
+          <div class="floor">
+            <div class="floor-label">1st Floor</div>
+            <div class="floor-items">
+              <span class="ftag ftag-green">SRG Logistics</span>
+              <span class="ftag ftag-green">Distribution Center</span>
+            </div>
+          </div>
+          <div class="floor">
+            <div class="floor-label">Rooftop</div>
+            <div class="floor-items">
+              <span class="ftag ftag-purple">VIP Event Space</span>
+              <span class="ftag ftag-purple">Rooftop Dining</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bcard">
+        <div class="bcard-header">
+          <div class="bcard-num">Building 3</div>
+          <div class="bcard-name">Tech & Media Campus</div>
+          <div class="bcard-addr">455 Whitehall St</div>
+          <div class="bcard-sf">5,580 sf + 1 story addition planned</div>
+        </div>
+        <div class="bcard-body">
+          <div class="floor">
+            <div class="floor-label">All Floors</div>
+            <div class="floor-items">
+              <span class="ftag ftag-green">Sharkey AI</span>
+              <span class="ftag ftag-green">Sharkey Robotics</span>
+              <span class="ftag ftag-purple">Sharkey Media</span>
+            </div>
+          </div>
+          <div class="floor">
+            <div class="floor-label">Note</div>
+            <div class="floor-items"><span class="ftag-note">One story addition planned to house all three divisions</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bcard">
+        <div class="bcard-header">
+          <div class="bcard-num">Building 4</div>
+          <div class="bcard-name">Academy & Corporate HQ</div>
+          <div class="bcard-addr">475 Whitehall St</div>
+          <div class="bcard-sf">9,374 sf &mdash; 2 Stories</div>
+        </div>
+        <div class="bcard-body">
+          <div class="floor">
+            <div class="floor-label">Floors 1–2</div>
+            <div class="floor-items">
+              <span class="ftag ftag-blue">Sharkey Academy</span>
+              <span class="ftag">Classrooms</span>
+              <span class="ftag">Tech Labs</span>
+              <span class="ftag">Gym & Wellness</span>
+            </div>
+          </div>
+          <div class="floor">
+            <div class="floor-label">Top Floor</div>
+            <div class="floor-items">
+              <span class="ftag ftag-gold">SRG Corporate HQ</span>
+              <span class="ftag">Executive Offices</span>
+              <span class="ftag">Boardroom</span>
+              <span class="ftag">HR & Finance</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:var(--navy2);border:1px solid var(--border);border-radius:10px;padding:28px;">
+      <div class="section-eyebrow" style="margin-bottom:10px;">Campus Strategy</div>
+      <p style="font-size:14px;color:var(--gray);line-height:1.8;max-width:800px;">Four separate buildings, four separate entrances, one unified SRG brand ecosystem. Guests, students, corporate staff, and logistics operations each have their own dedicated space — eliminating overlap while maximizing synergy. The Whitehall campus sits in Atlanta's HBCU corridor near I-20, serving a built-in market of 100K+ students while activating underutilized commercial property in an underserved community. This is not just a restaurant — it's a full economic engine.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CONCEPTS -->
+<div id="page-concepts" class="page">
+  <div class="section">
+    <div id="concepts-list-view">
+      <div class="section-eyebrow">Brand Portfolio</div>
+      <h2 class="section-title">20+ original concepts.<br>Built to last.</h2>
+      <p class="section-sub">Every brand is designed for scale, cultural resonance, and franchise replication — from fast-casual to fine dining.</p>
+      <div class="filter-bar" id="filter-bar">
+        <button class="filt active" onclick="filterConcepts('all',this)">All</button>
+        <button class="filt" onclick="filterConcepts('core',this)">Core</button>
+        <button class="filt" onclick="filterConcepts('premium',this)">Premium</button>
+        <button class="filt" onclick="filterConcepts('viral',this)">Viral</button>
+        <button class="filt" onclick="filterConcepts('cuisine',this)">Cuisine</button>
+        <button class="filt" onclick="filterConcepts('experience',this)">Experience</button>
+      </div>
+      <div class="card-grid" id="concepts-grid"></div>
+    </div>
+    <div id="concept-detail-view" class="detail-view">
+      <button class="back-link" onclick="closeConcept()">&#8592; Back to all concepts</button>
+      <div class="detail-header">
+        <div id="d-tag" class="card-tag"></div>
+        <div id="d-name" class="detail-name"></div>
+        <div id="d-desc" class="detail-desc"></div>
+        <div id="d-stats" class="detail-stats"></div>
+      </div>
+      <div class="detail-body">
+        <div class="detail-card"><div class="detail-card-title">Key Differentiator</div><div id="d-diff" class="detail-card-body"></div></div>
+        <div class="detail-card"><div class="detail-card-title">Franchise Opportunity</div><div id="d-fran" class="detail-card-body"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TEAM -->
+<div id="page-team" class="page">
+  <div class="section">
+    <div class="section-eyebrow">Corporate Leadership</div>
+    <h2 class="section-title">Built on trust,<br>proven experience.</h2>
+    <p class="section-sub">A high-trust, personally vetted team with decades of multi-unit restaurant experience — designed to scale fast and operate lean.</p>
+    <div class="team-grid" id="team-grid"></div>
+  </div>
+</div>
+
+<!-- FINANCIALS -->
+<div id="page-financials" class="page">
+  <div class="section">
+    <div class="section-eyebrow">Financial Overview</div>
+    <h2 class="section-title">Aggressive growth.<br>Disciplined execution.</h2>
+    <p class="section-sub">Rooted in operational benchmarks, franchise-ready infrastructure, and AI-driven cost controls.</p>
+
+    <div class="metric-row">
+      <div class="mcard"><div class="mcard-label">Year 1 Revenue</div><div class="mcard-val">$10M+</div><div class="mcard-sub">5 launch brands</div></div>
+      <div class="mcard"><div class="mcard-label">Year 3 Revenue</div><div class="mcard-val">$18M+</div><div class="mcard-sub">Full portfolio</div></div>
+      <div class="mcard"><div class="mcard-label">Year 5 Revenue</div><div class="mcard-val">$26M+</div><div class="mcard-sub">Franchise scale</div></div>
+      <div class="mcard"><div class="mcard-label">EBITDA Target</div><div class="mcard-val">18–22%</div><div class="mcard-sub">Year 1</div></div>
+      <div class="mcard"><div class="mcard-label">Soul Bowl / Unit</div><div class="mcard-val">~$5M</div><div class="mcard-sub">Annual target</div></div>
+      <div class="mcard"><div class="mcard-label">Rise & Shine / Unit</div><div class="mcard-val">$3–4M</div><div class="mcard-sub">Annual target</div></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
+      <div style="background:var(--navy2);border:1px solid var(--border);border-radius:10px;padding:28px;">
+        <div class="section-eyebrow" style="margin-bottom:16px;">Funding Allocation — $18M</div>
+        <div class="alloc-item"><div class="alloc-row"><span>Construction & buildout — 4 buildings</span><span style="color:var(--white);">$7.0M</span></div><div class="alloc-bar"><div class="alloc-fill" style="width:39%;background:#1a6fd4;"></div></div></div>
+        <div class="alloc-item"><div class="alloc-row"><span>Staffing & training</span><span style="color:var(--white);">$3.5M</span></div><div class="alloc-bar"><div class="alloc-fill" style="width:19%;background:#e8a020;"></div></div></div>
+        <div class="alloc-item"><div class="alloc-row"><span>Equipment & infrastructure</span><span style="color:var(--white);">$2.0M</span></div><div class="alloc-bar"><div class="alloc-fill" style="width:11%;background:#1d9e75;"></div></div></div>
+        <div class="alloc-item"><div class="alloc-row"><span>Technology & AI integration</span><span style="color:var(--white);">$1.5M</span></div><div class="alloc-bar"><div class="alloc-fill" style="width:8%;background:#7f77dd;"></div></div></div>
+        <div class="alloc-item"><div class="alloc-row"><span>Interior design — 8+ concepts</span><span style="color:var(--white);">$1.25M</span></div><div class="alloc-bar"><div class="alloc-fill" style="width:7%;background:#d85a30;"></div></div></div>
+        <div class="alloc-item"><div class="alloc-row"><span>Working capital & contingency</span><span style="color:var(--white);">$2.75M</span></div><div class="alloc-bar"><div class="alloc-fill" style="width:15%;background:#888;"></div></div></div>
+      </div>
+      <div style="background:var(--navy2);border:1px solid var(--border);border-radius:10px;padding:28px;">
+        <div class="section-eyebrow" style="margin-bottom:16px;">Revenue Streams</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="padding:10px 14px;background:rgba(255,255,255,0.03);border-radius:6px;font-size:13px;color:var(--gray);">Restaurant sales — dine-in, to-go, delivery</div>
+          <div style="padding:10px 14px;background:rgba(255,255,255,0.03);border-radius:6px;font-size:13px;color:var(--gray);">Franchising — fees, royalties, expansion</div>
+          <div style="padding:10px 14px;background:rgba(255,255,255,0.03);border-radius:6px;font-size:13px;color:var(--gray);">Catering & events — Grand Ballroom, corporate</div>
+          <div style="padding:10px 14px;background:rgba(255,255,255,0.03);border-radius:6px;font-size:13px;color:var(--gray);">Sharkey Media — branded content, docuseries</div>
+          <div style="padding:10px 14px;background:rgba(255,255,255,0.03);border-radius:6px;font-size:13px;color:var(--gray);">Culinary certifications — Academy revenue</div>
+          <div style="padding:10px 14px;background:rgba(255,255,255,0.03);border-radius:6px;font-size:13px;color:var(--gray);">Merchandise & brand licensing</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:var(--navy2);border:1px solid var(--border);border-radius:10px;padding:28px;">
+      <div class="section-eyebrow" style="margin-bottom:16px;">Community Impact Targets</div>
+      <table class="impact-table">
+        <thead><tr><th>Impact Area</th><th>Year 1</th><th>Year 3</th><th>Year 5</th></tr></thead>
+        <tbody>
+          <tr><td>Jobs Created</td><td>100+</td><td>150+</td><td>300+</td></tr>
+          <tr><td>Youth Trained via Academy</td><td>60</td><td>90+</td><td>150+</td></tr>
+          <tr><td>Franchisees Created</td><td>Program Launch</td><td>15 in Pipeline</td><td>30+ Owners</td></tr>
+          <tr><td>Buildings Activated</td><td>4</td><td>Fully Operational</td><td>Expansion Ready</td></tr>
+          <tr><td>Annual Revenue</td><td>$10M+</td><td>$18M+</td><td>$26M+</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ACADEMY -->
+<div id="page-academy" class="page">
+  <div class="section">
+    <div class="section-eyebrow">Sharkey Academy</div>
+    <h2 class="section-title">More than a culinary school.<br>A career launcher.</h2>
+    <p class="section-sub">Located in Building 4 at 475 Whitehall St. A nonprofit institution combining culinary arts, business, and coding education for underserved youth.</p>
+    <div class="metric-row">
+      <div class="mcard"><div class="mcard-label">Location</div><div class="mcard-val">Bldg 4</div><div class="mcard-sub">475 Whitehall</div></div>
+      <div class="mcard"><div class="mcard-label">Programs</div><div class="mcard-val">3</div><div class="mcard-sub">Culinary, Business, Coding</div></div>
+      <div class="mcard"><div class="mcard-label">Kitchen Access</div><div class="mcard-val">Shared</div><div class="mcard-sub">Building 1 main kitchen</div></div>
+      <div class="mcard"><div class="mcard-label">Google Pipeline</div><div class="mcard-val">Target</div><div class="mcard-sub">Coding career track</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-bottom:28px;">
+      <div style="background:var(--navy2);border:1px solid var(--border);border-radius:10px;padding:24px;">
+        <div style="font-size:22px;margin-bottom:14px;">🍳</div>
+        <div style="font-family:var(--font-display);font-size:19px;font-weight:600;margin-bottom:8px;">Culinary Arts</div>
+        <div style="font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:14px;">ACF-aligned curriculum. Students train in the shared SRG commercial kitchen in Building 1, learning real-world restaurant operations from Day 1.</div>
+        <div class="prog-bar-wrap"><div class="prog-label-row"><span>Program readiness</span><span>85%</span></div><div class="prog-bar"><div class="prog-fill" style="width:85%;background:#1a6fd4;"></div></div></div>
+      </div>
+      <div style="background:var(--navy2);border:1px solid var(--border);border-radius:10px;padding:24px;">
+        <div style="font-size:22px;margin-bottom:14px;">💼</div>
+        <div style="font-family:var(--font-display);font-size:19px;font-weight:600;margin-bottom:8px;">Business & Entrepreneurship</div>
+        <div style="font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:14px;">Finance fundamentals, restaurant ownership, and entrepreneurship coaching using SRG's own franchise model as a live case study.</div>
+        <div class="prog-bar-wrap"><div class="prog-label-row"><span>Program readiness</span><span>80%</span></div><div class="prog-bar"><div class="prog-fill" style="width:80%;background:#e8a020;"></div></div></div>
+      </div>
+      <div style="background:var(--navy2);border:1px solid var(--border);border-radius:10px;padding:24px;">
+        <div style="font-size:22px;margin-bottom:14px;">💻</div>
+        <div style="font-family:var(--font-display);font-size:19px;font-weight:600;margin-bottom:8px;">Coding & Technology</div>
+        <div style="font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:14px;">Google Career Certificates, Python, and AI tools. Graduates pipelined toward Google career opportunities through a direct partnership track.</div>
+        <div class="prog-bar-wrap"><div class="prog-label-row"><span>Program readiness</span><span>70%</span></div><div class="prog-bar"><div class="prog-fill" style="width:70%;background:#7f77dd;"></div></div></div>
+      </div>
+      <div style="background:var(--navy2);border:1px solid var(--border);border-radius:10px;padding:24px;">
+        <div style="font-size:22px;margin-bottom:14px;">🛡️</div>
+        <div style="font-family:var(--font-display);font-size:19px;font-weight:600;margin-bottom:8px;">Campus Safety</div>
+        <div style="font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:14px;">MMA-trained, licensed armed security throughout the campus. Dean of Student Life sets the tone for discipline, mentorship, and community culture.</div>
+        <div class="prog-bar-wrap"><div class="prog-label-row"><span>Program readiness</span><span>75%</span></div><div class="prog-bar"><div class="prog-fill" style="width:75%;background:#1d9e75;"></div></div></div>
+      </div>
+    </div>
+    <div style="background:var(--navy2);border:1px solid var(--border);border-radius:10px;padding:28px;">
+      <div class="section-eyebrow" style="margin-bottom:14px;">Graduate Outcome Tracks</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;">
+        <div style="padding:14px;background:rgba(255,255,255,0.03);border-radius:8px;"><div style="font-size:13px;font-weight:500;margin-bottom:4px;">Restaurant Employment</div><div style="font-size:12px;color:var(--gray);">Direct hire into SRG or franchise partners</div></div>
+        <div style="padding:14px;background:rgba(255,255,255,0.03);border-radius:8px;"><div style="font-size:13px;font-weight:500;margin-bottom:4px;">Franchise Prep Track</div><div style="font-size:12px;color:var(--gray);">Pathway to own a Soul Bowl or Rise & Shine</div></div>
+        <div style="padding:14px;background:rgba(255,255,255,0.03);border-radius:8px;"><div style="font-size:13px;font-weight:500;margin-bottom:4px;">Tech Career Path</div><div style="font-size:12px;color:var(--gray);">Entry-level role at Google or tech partner</div></div>
+        <div style="padding:14px;background:rgba(255,255,255,0.03);border-radius:8px;"><div style="font-size:13px;font-weight:500;margin-bottom:4px;">Entrepreneurship Track</div><div style="font-size:12px;color:var(--gray);">Launch own business with SRG as advisor</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- INVEST -->
+<div id="page-invest" class="page">
+  <div class="section">
+    <div class="section-eyebrow">Investor & Franchise Information</div>
+    <h2 class="section-title">Ready to build the next<br><em style="font-style:italic;color:var(--gold);">minority-owned food empire?</em></h2>
+    <p class="section-sub">Equity-interest structure with concept-level returns, franchise upside, and media revenue participation.</p>
+
+    <div class="invest-hero">
+      <div style="font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--gray);margin-bottom:8px;">Total Funding Target</div>
+      <div class="invest-amt">$18,000,000</div>
+      <p class="invest-sub">Invest Atlanta Lease Purchase Bond Program — City of Atlanta acquires the Whitehall Assemblage and leases it back to SRG under long-term terms. Full financial runway to activate all 4 buildings from Day 1.</p>
+      <div class="badge-row">
+        <div class="badge">Job creation initiative</div>
+        <div class="badge">HBCU corridor focus</div>
+        <div class="badge">Mayoral office support</div>
+        <div class="badge">Food desert impact</div>
+        <div class="badge">Property reactivation</div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:10px;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);">Expected Returns Per Concept</div>
+    <div class="returns-grid" style="margin-bottom:32px;">
+      <div class="rcard"><div class="rcard-pct">10%</div><div class="rcard-label">Net profits from chosen concept, paid quarterly</div></div>
+      <div class="rcard"><div class="rcard-pct">10%</div><div class="rcard-label">Franchise royalties generated by that concept</div></div>
+      <div class="rcard"><div class="rcard-pct">10%</div><div class="rcard-label">Media, licensing & product revenue tied to concept</div></div>
+      <div class="rcard"><div class="rcard-pct">10%</div><div class="rcard-label">Total payout upon exit or sale of the concept</div></div>
+    </div>
+
+    <div style="background:var(--navy2);border:1px solid var(--border);border-radius:10px;padding:28px;margin-bottom:16px;">
+      <div class="section-eyebrow" style="margin-bottom:14px;">Choose Your Concept</div>
+      <p style="font-size:14px;color:var(--gray);margin-bottom:20px;line-height:1.7;">Investors select a single SRG concept to back — gaining equity specifically tied to that brand's revenue, franchising, and exit value.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;">
+        <div style="padding:14px;border:1px solid var(--border);border-radius:8px;cursor:pointer;" onclick="showPage('concepts')">
+          <div class="card-tag tag-core" style="margin-bottom:8px;">Core</div>
+          <div style="font-size:14px;font-weight:500;margin-bottom:4px;">Soul Bowl</div>
+          <div style="font-size:12px;color:var(--gray);">~$5M/unit &bull; Franchise-ready</div>
+        </div>
+        <div style="padding:14px;border:1px solid var(--border);border-radius:8px;cursor:pointer;" onclick="showPage('concepts')">
+          <div class="card-tag tag-core" style="margin-bottom:8px;">Core</div>
+          <div style="font-size:14px;font-weight:500;margin-bottom:4px;">Rise & Shine</div>
+          <div style="font-size:12px;color:var(--gray);">$3–4M/unit &bull; Franchise-ready</div>
+        </div>
+        <div style="padding:14px;border:1px solid var(--border);border-radius:8px;cursor:pointer;" onclick="showPage('concepts')">
+          <div class="card-tag tag-premium" style="margin-bottom:8px;">Fine Dining</div>
+          <div style="font-size:14px;font-weight:500;margin-bottom:4px;">Chef Sharkey's</div>
+          <div style="font-size:12px;color:var(--gray);">Flagship &bull; High-margin</div>
+        </div>
+        <div style="padding:14px;border:1px solid var(--border);border-radius:8px;cursor:pointer;" onclick="showPage('concepts')">
+          <div class="card-tag tag-experience" style="margin-bottom:8px;">Events</div>
+          <div style="font-size:14px;font-weight:500;margin-bottom:4px;">Grand Ballroom</div>
+          <div style="font-size:12px;color:var(--gray);">Events &bull; High-margin</div>
+        </div>
+        <div style="padding:14px;border:1px solid var(--border);border-radius:8px;cursor:pointer;" onclick="showPage('concepts')">
+          <div class="card-tag tag-viral" style="margin-bottom:8px;">Viral</div>
+          <div style="font-size:14px;font-weight:500;margin-bottom:4px;">Stackery</div>
+          <div style="font-size:12px;color:var(--gray);">Social-driven &bull; Scalable</div>
+        </div>
+        <div style="padding:14px;border:1px solid var(--border);border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;" onclick="showPage('concepts')">
+          <div style="font-size:13px;color:var(--gray);">View all 20+ concepts &rarr;</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:var(--navy2);border:1px solid var(--border);border-radius:10px;padding:28px;">
+      <div class="section-eyebrow" style="margin-bottom:10px;">Founder</div>
+      <div style="display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap;">
+        <div style="width:52px;height:52px;background:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500;flex-shrink:0;">WS</div>
+        <div>
+          <div style="font-family:var(--font-display);font-size:20px;font-weight:600;margin-bottom:4px;">William Sharkey</div>
+          <div style="font-size:12px;color:var(--blue2);margin-bottom:10px;">Founder & Chairman — Sharkey Restaurant Group</div>
+          <p style="font-size:13px;color:var(--gray);line-height:1.7;max-width:680px;">37+ years in food and beverage operations, financial leadership, and multi-unit management. ACF Culinary Apprenticeship graduate. Bachelor's in Finance, MBA in Business Management. Architect of all 20+ SRG concepts — building a scalable, tech-forward ecosystem rooted in culture and designed for franchising. Launching with strategic alignment in Atlanta, supported by civic leadership and Invest Atlanta.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Sharkey Restaurant Group</div>
+  <div class="footer-tagline">The Google of Restaurants</div>
+  <div class="footer-note">&copy; 2025 Sharkey Restaurant Group. All rights reserved. Atlanta, Georgia.</div>
+</footer>
+
+<script>
+const concepts = [
+  {id:'soul-bowl',name:'Soul Bowl',cat:'core',tag:'Core',tagClass:'tag-core',desc:'Chipotle-style soul food concept with customizable bowls of bold Southern comfort food. Built for daily repeat visits, high volume, and franchise scale. Located on the 1st floor of Building 1.',revenue:'~$5M/unit',franchise:'Franchise-ready',format:'High Volume',diff:'Soul Suites — semi-private community spaces inside every location for studying, podcasting, and networking. Drives dwell time and repeat visits, positioning Soul Bowl as a daily-use destination.',fran:'Franchise-ready from Day 1. Each unit targets $5M annual revenue. Soul Suites create brand stickiness that drives franchisee performance above industry average.'},
+  {id:'rise-shine',name:'Rise & Shine',cat:'core',tag:'Core',tagClass:'tag-core',desc:'Fast-casual breakfast concept anchored by a signature Biscuit Bar. Built for commuters, families, and daily repeat traffic with strong breakfast catering demand. Located on the 1st floor of Building 1.',revenue:'$3–4M/unit',franchise:'Franchise-ready',format:'High Volume',diff:'The Biscuit Bar — a speed-first customization centerpiece that serves as the brand identity and throughput engine across all channels including dine-in, grab-and-go, and catering.',fran:'Recession-resistant breakfast daypart. Operationally simple, highly repeatable, and designed for breakfast catering to offices, schools, and churches.'},
+  {id:'chef-sharkeys',name:"Chef Sharkey's",cat:'premium',tag:'Fine Dining',tagClass:'tag-premium',desc:"Flagship fine dining experience on the 3rd floor of Building 1. Features a theatrical open-kitchen Kitchen Stadium, exclusive members area, and chef-driven artistry positioned above Ruth's Chris level.",revenue:'High margin',franchise:'Flagship',format:'Intimate',diff:"Kitchen Stadium format — theatrical open-kitchen where guests witness the culinary craft in real time. Creates an unmatched experiential dining moment that can't be replicated at home.",fran:"Chef Sharkey's is SRG's prestige brand. Its success drives visibility and investor confidence across all concepts. Not franchise-first, but a national expansion candidate."},
+  {id:'grand-ballroom',name:"Chef Sharkey's Grand Ballroom",cat:'experience',tag:'Events',tagClass:'tag-experience',desc:"Located on the 2nd floor of Building 1, directly below Chef Sharkey's restaurant. A premier event venue for weddings, corporate gatherings, and private dining with dedicated Bride & Groom Suites.",revenue:'High margin',franchise:'Flagship',format:'200+ seats',diff:"Shares the Chef Sharkey's brand with the 3rd floor restaurant — guests can host their wedding reception in the Grand Ballroom and have a private dinner upstairs the same night. A powerful upsell.",fran:'High-margin events business with built-in upsell to the Chef Sharkey\'s dining experience. One of the most liquidity-accelerating concepts in the portfolio.'},
+  {id:'stackery',name:'Stackery',cat:'viral',tag:'Viral',tagClass:'tag-viral',desc:"High-impact viral dining experience on the 1st floor of Building 1. Features stacked, never-before-seen creations including the Shedeur Stack — Wagyu, truffle butter, gold leaf.",revenue:'High velocity',franchise:'Scalable',format:'Medium',diff:'Celebrity-feature items like the Shedeur Stack create social media-driven demand that markets the brand for free at massive scale. The dish itself is the advertising.',fran:'Viral food concepts show fastest brand awareness growth in the industry. Stackery is designed to go national quickly through organic content virality.'},
+  {id:'hot-spuds',name:'Hot Spuds',cat:'viral',tag:'Viral',tagClass:'tag-viral',desc:'Over-the-top loaded baked potato restaurant with wild, indulgent topping combinations. A simple concept with massive customization and shareability.',revenue:'Fast-casual',franchise:'Franchise-ready',format:'High Volume',diff:'The loaded potato is a blank canvas — endlessly customizable, universally loved, and highly photographable. A natural social media magnet with a simple supply chain.',fran:'Simple supply chain, low food waste, and high throughput make Hot Spuds one of the most cost-efficient franchise vehicles in the portfolio.'},
+  {id:'reserve',name:'The Reserve',cat:'premium',tag:'Premium',tagClass:'tag-premium',desc:'Luxury high-end steakhouse concept featuring refined cuts, curated wine, and an elevated atmosphere competitive with the best steak brands nationally.',revenue:'Premium',franchise:'Scalable',format:'Intimate',diff:'Positioned above chain steakhouses with a true luxury experiential model — curated wine program, private dining rooms, and elite country club-level FOH service standards.',fran:'The Reserve targets the premium steak segment that continues to grow among high-income consumers, particularly in Sun Belt metro markets like Atlanta.'},
+  {id:'ribeyes',name:"Ribeye's",cat:'premium',tag:'Premium',tagClass:'tag-premium',desc:"$1-per-ounce ribeye steakhouse with premium cuts, a vegetable and salad buffet, and a kid-friendly buffet — making steak accessible without sacrificing quality.",revenue:'Volume + premium',franchise:'Scalable',format:'High Volume',diff:"The $1/oz ribeye pricing model is a category-defining hook that drives curiosity, trial, and word-of-mouth across every demographic.",fran:"Ribeye's blends premium appeal with volume throughput — a rare combination that makes it highly scalable while maintaining strong unit economics."},
+  {id:'roux-room',name:"La'Rouxianna",cat:'cuisine',tag:'Cuisine',tagClass:'tag-cuisine',desc:"Louisiana-inspired gumbo concept featuring Gumbo Burgers, Jambalaya Loaded Fries, and rotating rice-based dishes rooted in Cajun and Creole culture.",revenue:'Fast-casual',franchise:'Scalable',format:'Medium',diff:"The Gumbo Burger is a category-creating product — familiar format, completely unexpected flavor profile. Instantly viral and regionally authentic.",fran:"Louisiana cuisine has massive national appeal but near-zero franchise representation. La'Rouxianna owns that white space with an operationally lean model."},
+  {id:'plantz',name:'Plantz Yeah Mon!',cat:'cuisine',tag:'Cuisine',tagClass:'tag-cuisine',desc:"Jamaican-inspired vegan concept with bold branding and viral identity. Serves a growing plant-based consumer base through the lens of Caribbean culture.",revenue:'Fast-casual',franchise:'Scalable',format:'Medium',diff:'Merges two of the fastest-growing consumer trends — plant-based dining and cultural authenticity — into one bold, irreverent brand.',fran:'The plant-based market continues to grow among Gen Z and Millennials. Plantz Yeah Mon! is positioned as the culturally-driven leader in this space.'},
+  {id:'harvest',name:'The Harvest Table',cat:'experience',tag:'Experience',tagClass:'tag-experience',desc:'Family-style communal dining with monthly regional themes and weekly rotating menus. Thanksgiving-style shared table service creates a warm, memorable community dining experience.',revenue:'Full service',franchise:'Scalable',format:'Communal',diff:'The communal table format is rare in American restaurant culture — creating genuine connection between guests and making every visit feel special and unrepeatable.',fran:'Targets growing demand for meaningful dining experiences over transactional meals, particularly among Millennial and Gen X diners.'},
+  {id:'culinary-cross',name:'Culinary Crossroads',cat:'cuisine',tag:'Cuisine',tagClass:'tag-cuisine',desc:'Jamaican-American fusion ghost kitchen concept. Delivers bold, unexpected flavor combinations through a delivery-first model with low overhead.',revenue:'Ghost kitchen',franchise:'Scalable',format:'Delivery-only',diff:'Ghost kitchen model eliminates FOH costs while testing Jamaican-American fusion — a genuinely underrepresented flavor profile in the fast-casual delivery market.',fran:'Ghost kitchen franchise models offer the lowest capital entry point in the SRG portfolio — ideal for franchisees entering the system for the first time.'},
+  {id:'artpulence',name:'Artpulence',cat:'experience',tag:'Experience',tagClass:'tag-experience',desc:'Luxury grazing table events combined with guided painting experiences. Artwork is created, displayed, and sold at each event. Led by Richard Wall III.',revenue:'Event-based',franchise:'Scalable',format:'Event format',diff:'The only dining experience in the SRG portfolio that produces and sells original art at every event — creating a truly one-of-a-kind premium occasion.',fran:'Artpulence targets the rapidly growing experiential event market, particularly among upscale consumers seeking curated cultural experiences.'},
+  {id:'sweetness',name:'Sweetness',cat:'experience',tag:'Legacy',tagClass:'tag-experience',desc:"Tribute concept inspired by Walter Payton and Chef Charlie Trotter — the Chicago Dream Team vision. A legacy dining experience honoring two legends of excellence.",revenue:'Fine dining',franchise:'Flagship',format:'Intimate',diff:"Walter Payton's legacy and Charlie Trotter's culinary genius create an emotional connection before a guest ever sits down. Cultural resonance built in from Day 1.",fran:"A flagship legacy brand building SRG's cultural credibility and prestige positioning nationally. Not designed for rapid franchising."},
+  {id:'amoure',name:'Amouré',cat:'experience',tag:'Experience',tagClass:'tag-experience',desc:'Romance-themed upscale dining experience designed for date nights, proposals, and intimate celebrations. Atmosphere-first concept with immersive ambiance.',revenue:'Premium',franchise:'Scalable',format:'Intimate',diff:'Every element — lighting, sound, table design, and service cadence — is engineered specifically to create romantic atmosphere. Purpose-built for memorable occasions.',fran:'Special occasion dining is one of the most recession-resistant segments. Amouré captures the growing consumer desire for curated romantic experiences.'},
+  {id:'cosecha',name:'Cosecha Mesa',cat:'cuisine',tag:'Cuisine',tagClass:'tag-cuisine',desc:'Farm-to-table concept rooted in harvest culture, seasonal menus, and regional sourcing. A premium casual dining experience celebrating agricultural heritage.',revenue:'Premium casual',franchise:'Scalable',format:'Medium',diff:'Seasonal, locally-sourced menus that change with real agricultural cycles — creating genuine scarcity, anticipation, and authentic farm-to-table credibility.',fran:'Targets premium casual diners who prioritize transparency, sustainability, and quality sourcing over convenience.'},
+  {id:'stack-hause',name:'Stack Hause',cat:'viral',tag:'Viral',tagClass:'tag-viral',desc:"Elevated spin-off of the Stackery concept — a brick-and-mortar experiential format featuring signature stacked creations at a premium price point.",revenue:'Premium casual',franchise:'Scalable',format:'Medium-large',diff:"Bridges Stackery's viral fast-casual energy and fine dining presentation — making it aspirational yet accessible to a wider audience.",fran:'Stack Hause expands the Stackery universe into a higher-ticket format, unlocking a new customer segment and franchisee profile.'},
+  {id:'essenza',name:'Essenza',cat:'premium',tag:'Premium',tagClass:'tag-premium',desc:'Italian-inspired elevated concept featuring handcrafted pasta, curated wine, and refined European dining traditions adapted for the American luxury market.',revenue:'Fine dining',franchise:'Scalable',format:'Intimate',diff:'Brings authentic Italian culinary tradition into an elevated American dining context — filling the gap between casual Italian chains and untouchably exclusive fine dining.',fran:'Targets the large and loyal Italian dining category with premium positioning that has no direct franchise competitor at this service level.'},
+  {id:'luxpulence',name:'Luxpulence',cat:'experience',tag:'Experience',tagClass:'tag-experience',desc:'Ultra-premium extension of the Artpulence brand — combining luxury grazing, fine art curation, and VIP entertainment into an exclusive private event concept.',revenue:'Ultra-premium',franchise:'Flagship',format:'Private events',diff:'Positions SRG at the absolute top of the experiential event market — for clients who demand exclusivity, curation, and world-class hospitality.',fran:'Operates as the prestige halo brand for the Artpulence ecosystem, attracting high-net-worth clients and elevating overall SRG brand perception.'},
+  {id:'farm-heritage',name:'Farm Heritage x John Deere',cat:'experience',tag:'Experience',tagClass:'tag-experience',desc:'Agricultural heritage dining concept in partnership with John Deere — celebrating American farming culture through food, storytelling, and immersive farm-to-fork experiences.',revenue:'Full service',franchise:'Partnership',format:'Large format',diff:'The John Deere partnership creates instant brand recognition, massive marketing reach, and a unique farm-heritage dining narrative with no direct competitor.',fran:'Opens access to rural, suburban, and agricultural markets that SRG would otherwise not reach — dramatically expanding the franchise universe.'}
+];
+
+const team=[
+  {i:'WS',n:'William Sharkey',r:'Founder & Chairman',note:'37+ years in F&B ops. ACF culinary graduate. Bachelor\'s in Finance, MBA. Architect of all 20+ SRG concepts. Salary drawn from Sharkey Academy.',c:'#1a6fd4'},
+  {i:'KA',n:'Ken Allen',r:'President of SRG',note:'Former Five Guys Regional Manager. Deep franchise systems experience. Highest-paid SRG executive. Oversees all daily operations.',c:'#e8a020'},
+  {i:'BB',n:'Brandy Booth',r:'Director of Hospitality & Guest Experience',note:'Country club F&B specialist. 5+ years working directly with William. Creates and enforces SRG luxury service culture across all concepts.',c:'#1d9e75'},
+  {i:'KV',n:'Kevin',r:'Director of Corporate Restaurant Operations',note:'Former GM at Lone Star Steakhouse. Multi-brand ops expertise. Ensures daily execution across all SRG concepts. Reports to Ken Allen.',c:'#7f77dd'},
+  {i:'MK',n:'Marko',r:'Director of Training & Systems Implementation',note:'10 years Cracker Barrel management. Systems-driven operator. Leads all FOH/BOH training programs and new unit rollout.',c:'#d85a30'},
+  {i:'WL',n:'Willie Lagrone',r:'Corporate Field Director — Culinary Execution',note:'Cousin to William Sharkey. 40+ years BOH experience. TGI Fridays & Outback corporate background. Ensures every plate is cooked to spec.',c:'#993556'},
+  {i:'BS',n:'Broderick Sharkey',r:'Corporate Field Director — Culinary Execution',note:'Brother of William Sharkey. 40+ years BOH. Veteran line operator. Enforces kitchen discipline and food consistency across all brands.',c:'#0f6e56'},
+  {i:'EM',n:'Ed Moore',r:'Director of Human Resources',note:'Former Five Guys HR leader. Oversees all hiring, onboarding, training systems, and internal policy development across the SRG campus.',c:'#185fa5'},
+  {i:'SW',n:'Shawn Wilson',r:'Director of Internal Compliance & Operational Safety',note:'10 years Cracker Barrel management. SRG in-house Steritech — cleanliness, sanitation, brand compliance, and internal audits.',c:'#634806'},
+  {i:'RG',n:'Reggie',r:'Director of Multi-Brand Unit Performance',note:'Former GM at Applebee\'s and Taco Bell. Multi-brand operator who coaches unit-level GMs and resolves performance gaps across concepts.',c:'#3b6d11'},
+  {i:'SR',n:'Stephan Richardson',r:'Director of Real Estate Development',note:'Builds developer relationships and identifies strategic locations. Works directly with William and Ken on expansion site selection.',c:'#533ab7'},
+  {i:'ML',n:'Michy Lagrone',r:'CPA — Sharkey Academy',note:'Nonprofit CPA specialist. Iowa-based hybrid role. Handles all Academy accounting compliance, audits, and grant reporting.',c:'#888780'},
+  {i:'CG',n:'Christian Green',r:'Director of Technology & AI Integration (Tentative)',note:'Oversees Sharkey OS, AI dashboards, Sharkey Robotics integration, CrunchTime, and franchise tech deployment.',c:'#ba7517'}
+];
+
+function renderConcepts(filter){
+  const filtered=filter==='all'?concepts:concepts.filter(c=>c.cat===filter);
+  document.getElementById('concepts-grid').innerHTML=filtered.map(c=>`
+    <div class="card" onclick="showConcept('${c.id}')" style="cursor:pointer;">
+      <div class="card-tag ${c.tagClass}">${c.tag}</div>
+      <div class="card-title">${c.name}</div>
+      <div class="card-desc">${c.desc.substring(0,130)}...</div>
+      <div class="card-meta">
+        <div class="card-meta-item"><div class="card-meta-label">Revenue</div><div class="card-meta-val">${c.revenue}</div></div>
+        <div class="card-meta-item"><div class="card-meta-label">Status</div><div class="card-meta-val">${c.franchise}</div></div>
+        <div class="card-meta-item"><div class="card-meta-label">Format</div><div class="card-meta-val">${c.format}</div></div>
+      </div>
+      <span class="card-link">View full details &rarr;</span>
+    </div>`).join('');
+}
+
+function filterConcepts(cat,btn){
+  document.querySelectorAll('.filt').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderConcepts(cat);
+}
+
+function showConcept(id){
+  const c=concepts.find(x=>x.id===id);
+  if(!c)return;
+  document.getElementById('concepts-list-view').style.display='none';
+  const dv=document.getElementById('concept-detail-view');
+  dv.classList.add('active');
+  document.getElementById('d-tag').textContent=c.tag;
+  document.getElementById('d-tag').className='card-tag '+c.tagClass;
+  document.getElementById('d-name').textContent=c.name;
+  document.getElementById('d-desc').textContent=c.desc;
+  document.getElementById('d-stats').innerHTML=`
+    <div><div class="dstat-val">${c.revenue}</div><div class="dstat-label">Revenue Target</div></div>
+    <div><div class="dstat-val">${c.franchise}</div><div class="dstat-label">Status</div></div>
+    <div><div class="dstat-val">${c.format}</div><div class="dstat-label">Format</div></div>`;
+  document.getElementById('d-diff').textContent=c.diff;
+  document.getElementById('d-fran').textContent=c.fran;
+}
+
+function closeConcept(){
+  document.getElementById('concepts-list-view').style.display='block';
+  document.getElementById('concept-detail-view').classList.remove('active');
+}
+
+function renderTeam(){
+  document.getElementById('team-grid').innerHTML=team.map(t=>`
+    <div class="tcard">
+      <div class="tavatar" style="background:${t.c};">${t.i}</div>
+      <div>
+        <div class="tname">${t.n}</div>
+        <div class="trole">${t.r}</div>
+        <div class="tnote">${t.note}</div>
+      </div>
+    </div>`).join('');
+}
+
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn,.mobile-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  const pages=['home','campus','concepts','team','financials','academy','invest'];
+  const idx=pages.indexOf(id);
+  document.querySelectorAll('.nav-btn')[idx]?.classList.add('active');
+  document.querySelectorAll('.mobile-btn')[idx]?.classList.add('active');
+  window.scrollTo(0,0);
+  if(id==='concepts'){
+    document.getElementById('concepts-list-view').style.display='block';
+    document.getElementById('concept-detail-view').classList.remove('active');
+  }
+}
+
+renderConcepts('all');
+renderTeam();
+</script>
+</body>
+</html>
