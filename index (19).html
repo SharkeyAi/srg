@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sharkey Restaurant Group — investinsrg.com</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0a1628;--navy2:#0f2040;--navy3:#111827;
+  --gold:#e8a020;--gold2:#ffd060;
+  --blue:#1a6fd4;--blue2:#2484f5;--blue3:#60a5fa;
+  --green:#1d9e75;--green2:#6dd9b5;
+  --purple:#7c3aed;--purple2:#c4b5fd;
+  --red:#ef4444;--red2:#fca5a5;
+  --cyan:#06b6d4;--cyan2:#67e8f9;
+  --orange:#f97316;
+  --white:#ffffff;--gray:#8899aa;--light:#f4f6f9;
+  --border:rgba(255,255,255,0.08);
+  --font-display:'Cormorant Garamond',serif;
+  --font-body:'DM Sans',sans-serif;
+  --font-mono:'DM Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--navy);color:var(--white);overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,22,40,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(20px);}
+.nav-top{height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;}
+.nav-brand-text{font-family:var(--font-display);font-size:17px;font-weight:600;}
+.nav-brand-sub{font-size:9px;color:var(--gray);letter-spacing:1.5px;text-transform:uppercase;}
+.nav-row{display:flex;gap:2px;flex-wrap:wrap;padding:4px 20px 6px;}
+.nav-btn{padding:4px 10px;border-radius:4px;font-size:11px;color:var(--gray);cursor:pointer;border:none;background:transparent;font-family:var(--font-body);transition:all .2s;}
+.nav-btn:hover,.nav-btn.active{color:var(--white);background:rgba(255,255,255,0.08);}
+.nav-btn.tech{color:#67e8f9;}
+.nav-btn.acad{color:var(--gold);}
+.nav-divider{width:1px;background:var(--border);margin:0 4px;align-self:stretch;}
+
+/* MOBILE NAV */
+.mnav{display:none;overflow-x:auto;gap:4px;padding:8px 14px;background:rgba(10,22,40,0.98);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:999;scrollbar-width:none;}
+.mnav::-webkit-scrollbar{display:none;}
+.mb{padding:4px 10px;border-radius:4px;font-size:10px;border:1px solid var(--border);background:transparent;cursor:pointer;color:var(--gray);font-family:var(--font-body);white-space:nowrap;transition:all .2s;}
+.mb.active{background:rgba(255,255,255,0.1);color:var(--white);border-color:rgba(255,255,255,0.15);}
+
+/* PAGES */
+.page{display:none;min-height:100vh;padding-top:88px;}
+.page.active{display:block;}
+.section{padding:40px 24px;max-width:1200px;margin:0 auto;}
+
+/* TYPOGRAPHY */
+.ey{font-family:var(--font-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+.pt{font-family:var(--font-display);font-size:clamp(28px,4vw,48px);font-weight:600;line-height:1.1;margin-bottom:8px;}
+.ps{font-size:14px;color:var(--gray);line-height:1.7;max-width:600px;margin-bottom:28px;}
+
+/* MISSION BANNER */
+.mission{background:linear-gradient(135deg,var(--navy2),var(--navy));border:1px solid rgba(232,160,32,0.2);border-radius:10px;padding:28px;margin-bottom:24px;text-align:center;}
+.mission-headline{font-family:var(--font-display);font-size:clamp(20px,3vw,32px);font-weight:600;margin-bottom:8px;line-height:1.3;}
+.mission-sub{font-size:13px;color:var(--gray);line-height:1.7;max-width:600px;margin:0 auto 16px;}
+.mission-tag{display:inline-block;font-family:var(--font-mono);font-size:12px;color:var(--gold);border:1px solid rgba(232,160,32,0.3);padding:6px 16px;border-radius:4px;}
+
+/* METRICS */
+.mr{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:20px;}
+.mc{background:var(--navy2);padding:14px;}
+.ml{font-size:10px;letter-spacing:.8px;text-transform:uppercase;color:var(--gray);margin-bottom:4px;font-family:var(--font-mono);}
+.mv{font-family:var(--font-display);font-size:22px;font-weight:600;}
+.ms{font-size:11px;color:var(--gray);margin-top:1px;}
+
+/* CARDS */
+.cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1px;background:var(--border);}
+.card{background:var(--navy2);padding:22px;transition:background .2s;cursor:pointer;}
+.card:hover{background:var(--navy3);}
+.ct{font-family:var(--font-display);font-size:18px;font-weight:600;margin-bottom:4px;}
+.cd{font-size:12px;color:var(--gray);line-height:1.6;}
+.ctag{display:inline-block;font-size:10px;letter-spacing:.8px;text-transform:uppercase;padding:2px 8px;border-radius:3px;margin-bottom:8px;font-weight:500;font-family:var(--font-mono);}
+.tag-core{background:rgba(26,111,212,0.2);color:#7ab4f5;}
+.tag-premium{background:rgba(232,160,32,0.2);color:#f5c04a;}
+.tag-viral{background:rgba(211,82,126,0.2);color:#f09fbf;}
+.tag-cuisine{background:rgba(29,158,117,0.2);color:#6dd9b5;}
+.tag-experience{background:rgba(127,119,221,0.2);color:#b3aef5;}
+.tag-lifestyle{background:rgba(186,119,23,0.2);color:#f0c070;}
+
+/* FILTER */
+.fb{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px;}
+.filt{padding:5px 14px;border-radius:20px;font-size:11px;border:1px solid var(--border);background:transparent;cursor:pointer;color:var(--gray);font-family:var(--font-body);transition:all .2s;}
+.filt.active,.filt:hover{background:var(--blue);color:var(--white);border-color:var(--blue);}
+
+/* DETAIL VIEW */
+.dv{display:none;}
+.dv.active{display:block;}
+.bl{display:inline-flex;align-items:center;gap:6px;color:var(--gray);font-size:12px;cursor:pointer;margin-bottom:20px;border:none;background:transparent;font-family:var(--font-body);}
+.dh{background:var(--navy2);border:1px solid var(--border);border-radius:10px;padding:28px;margin-bottom:14px;}
+.dn{font-family:var(--font-display);font-size:clamp(24px,3vw,40px);font-weight:600;margin-bottom:8px;}
+.dd{font-size:13px;color:var(--gray);line-height:1.7;max-width:700px;margin-bottom:20px;}
+.db{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:600px){.db{grid-template-columns:1fr;}}
+.dc{background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:18px;}
+.dct{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;font-family:var(--font-mono);}
+.dcb{font-size:13px;color:var(--gray);line-height:1.7;}
+
+/* TECHNOLOGY TILES */
+.tech-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-bottom:24px;}
+.tech-tile{border-radius:10px;padding:24px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;}
+.tech-tile:hover{transform:translateY(-2px);}
+.tech-tile::after{content:'View Details →';position:absolute;bottom:16px;right:18px;font-size:11px;opacity:0.5;font-family:var(--font-mono);}
+.tt-icon{font-size:28px;margin-bottom:12px;}
+.tt-name{font-family:var(--font-display);font-size:20px;font-weight:600;margin-bottom:4px;}
+.tt-tag{font-family:var(--font-mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;opacity:0.7;}
+.tt-desc{font-size:12px;line-height:1.6;opacity:0.8;}
+
+/* TECH DETAIL */
+.tdv{display:none;}
+.tdv.active{display:block;}
+
+/* BUILDING */
+.bg{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin-bottom:20px;}
+.bc{background:var(--navy2);border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+.bch{background:linear-gradient(135deg,var(--navy2),var(--navy));padding:14px 16px;border-bottom:1px solid var(--border);}
+.bcn{font-family:var(--font-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:3px;}
+.bcna{font-family:var(--font-display);font-size:15px;font-weight:600;margin-bottom:1px;}
+.bca{font-size:11px;color:var(--gray);}
+.bcsf{font-size:10px;color:#f5c04a;margin-top:3px;}
+.bcb{padding:14px 16px;}
+.fl{display:flex;gap:8px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
+.fl:last-child{border-bottom:none;}
+.fll{font-size:9px;letter-spacing:.8px;text-transform:uppercase;color:var(--blue3);min-width:56px;padding-top:2px;font-weight:500;font-family:var(--font-mono);}
+.fli{display:flex;flex-wrap:wrap;gap:4px;}
+.ft{font-size:10px;padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.7);}
+.ftb{background:rgba(26,111,212,0.15);color:#7ab4f5;}
+.ftg{background:rgba(232,160,32,0.15);color:#f5c04a;}
+.ftgr{background:rgba(29,158,117,0.15);color:#6dd9b5;}
+.ftp{background:rgba(127,119,221,0.15);color:#b3aef5;}
+
+/* TEAM */
+.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;}
+.tc{background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:16px;display:flex;gap:12px;}
+.ta{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;flex-shrink:0;}
+.tn{font-size:13px;font-weight:500;margin-bottom:1px;}
+.tr{font-size:10px;color:var(--blue3);letter-spacing:.3px;margin-bottom:4px;font-family:var(--font-mono);}
+.tnote{font-size:11px;color:var(--gray);line-height:1.5;}
+
+/* CONTACTS */
+.contacts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin-bottom:20px;}
+.contact-card{background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:18px;}
+.contact-group{font-family:var(--font-mono);font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.contact-name{font-size:14px;font-weight:500;margin-bottom:2px;}
+.contact-role{font-size:11px;color:var(--blue3);margin-bottom:8px;}
+.contact-info{font-size:12px;color:var(--gray);line-height:1.8;}
+
+/* FOUNDERS CIRCLE */
+.lane{background:var(--navy2);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.lane-header{padding:16px 20px;border-bottom:1px solid var(--border);}
+.lane-amount{font-family:var(--font-display);font-size:28px;font-weight:600;color:var(--gold);}
+.lane-body{padding:16px 20px;display:flex;flex-direction:column;gap:8px;font-size:12px;}
+.lane-row{display:flex;justify-content:space-between;}
+.lane-label{color:var(--gray);}
+
+/* ACADEMY */
+.prog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:20px;}
+.prog{background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:14px;}
+.prog-icon{font-size:20px;margin-bottom:8px;}
+.prog-name{font-size:13px;font-weight:500;margin-bottom:4px;}
+.prog-desc{font-size:11px;color:var(--gray);line-height:1.6;}
+
+/* DIVIDER */
+.divider{height:1px;background:var(--border);margin:24px 0;}
+
+/* GRID UTILS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px;margin-bottom:16px;}
+@media(max-width:600px){.g2{grid-template-columns:1fr;}}
+
+/* BADGE */
+.badge{display:inline-flex;align-items:center;font-size:10px;padding:3px 8px;border-radius:3px;font-family:var(--font-mono);letter-spacing:.5px;font-weight:500;margin-bottom:6px;}
+.badge-gold{background:rgba(232,160,32,0.12);color:var(--gold);}
+.badge-blue{background:rgba(26,111,212,0.15);color:#7ab4f5;}
+.badge-green{background:rgba(29,158,117,0.12);color:var(--green2);}
+.badge-cyan{background:rgba(6,182,212,0.12);color:var(--cyan2);}
+.badge-purple{background:rgba(124,58,237,0.15);color:var(--purple2);}
+.badge-red{background:rgba(239,68,68,0.12);color:var(--red2);}
+.badge-orange{background:rgba(249,115,22,0.12);color:var(--orange);}
+
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:20px;}
+.tbl th{text-align:left;padding:8px 10px;color:var(--gray);font-weight:500;font-size:10px;letter-spacing:.8px;text-transform:uppercase;border-bottom:1px solid var(--border);font-family:var(--font-mono);}
+.tbl td{padding:9px 10px;color:var(--white);border-bottom:1px solid rgba(255,255,255,0.04);}
+.tbl td:not(:first-child){color:var(--gray);}
+.tbl tr:nth-child(even){background:rgba(255,255,255,0.02);}
+
+/* MOBILE */
+@media(max-width:768px){
+  nav{padding:0;}
+  .nav-top{padding:0 12px;}
+  .nav-row{display:none;}
+  .mnav{display:flex;}
+  .page{padding-top:54px;}
+  .section{padding:24px 14px;}
+  .bg{grid-template-columns:1fr;}
+  .tech-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-top">
+    <div>
+      <div class="nav-brand-text">Sharkey Restaurant Group</div>
+      <div class="nav-brand-sub">investinsrg.com</div>
+    </div>
+    <div style="font-family:var(--font-mono);font-size:10px;color:var(--gray);">The Google of Restaurants™</div>
+  </div>
+  <div class="nav-row">
+    <button class="nav-btn active" onclick="showPage('home')">Overview</button>
+    <button class="nav-btn" onclick="showPage('concepts')">24 Concepts</button>
+    <button class="nav-btn" onclick="showPage('campus')">Campus</button>
+    <button class="nav-btn" onclick="showPage('team')">Team</button>
+    <button class="nav-btn" onclick="showPage('financials')">Financials</button>
+    <button class="nav-btn" onclick="showPage('realestate')">Real Estate</button>
+    <button class="nav-btn" onclick="showPage('founders')">Founders Circle</button>
+    <button class="nav-btn" onclick="showPage('contacts')">Contacts</button>
+    <div class="nav-divider"></div>
+    <button class="nav-btn tech" onclick="showPage('technology')">Technology</button>
+    <div class="nav-divider"></div>
+    <button class="nav-btn acad" onclick="showPage('academy')">Sharkey Academy</button>
+  </div>
+</nav>
+
+<div class="mnav">
+  <button class="mb active" onclick="showPage('home')">Overview</button>
+  <button class="mb" onclick="showPage('concepts')">Concepts</button>
+  <button class="mb" onclick="showPage('campus')">Campus</button>
+  <button class="mb" onclick="showPage('team')">Team</button>
+  <button class="mb" onclick="showPage('financials')">Financials</button>
+  <button class="mb" onclick="showPage('realestate')">Real Estate</button>
+  <button class="mb" onclick="showPage('founders')">Founders Circle</button>
+  <button class="mb" onclick="showPage('contacts')">Contacts</button>
+  <button class="mb" onclick="showPage('technology')" style="color:var(--cyan2);border-color:rgba(6,182,212,0.3);">Technology</button>
+  <button class="mb" onclick="showPage('academy')" style="color:var(--gold);border-color:rgba(232,160,32,0.3);">Academy</button>
+</div>
+
+<!-- HOME -->
+<div id="page-home" class="page active">
+  <div class="section">
+    <div class="mission">
+      <div class="ey" style="color:var(--gold);">Founding Mission</div>
+      <div class="mission-headline">To build the largest minority-owned<br>restaurant group in American history.</div>
+      <div class="mission-sub">24 original concepts. 3 franchise-ready from Day 1. A 66,614 sf campus on Whitehall Street, Atlanta. The world's first autonomous restaurant operating system. A nonprofit academy transforming underserved youth into entrepreneurs.</div>
+      <div class="mission-tag">1,000 Locations · 10 Years · Built, Not Bought.</div>
+    </div>
+
+    <div class="mr">
+      <div class="mc"><div class="ml">Concepts</div><div class="mv">24</div><div class="ms">All original IP</div></div>
+      <div class="mc"><div class="ml">Franchise Ready</div><div class="mv">3</div><div class="ms">Day 1</div></div>
+      <div class="mc"><div class="ml">Campus</div><div class="mv">66,614</div><div class="ms">sq ft · 4 buildings</div></div>
+      <div class="mc"><div class="ml">Investor Ask</div><div class="mv">$5–7M</div><div class="ms">Total project $18M</div></div>
+      <div class="mc"><div class="ml">Yr 1 Revenue</div><div class="mv">$10M+</div><div class="ms">5 launch brands</div></div>
+      <div class="mc"><div class="ml">Yr 5 Revenue</div><div class="mv">$26M+</div><div class="ms">Full portfolio</div></div>
+      <div class="mc"><div class="ml">Jobs Yr 1</div><div class="mv">100–150</div><div class="ms">On campus</div></div>
+      <div class="mc"><div class="ml">Location Goal</div><div class="mv">1,000</div><div class="ms">In 10 years</div></div>
+    </div>
+
+    <div class="ey" style="color:var(--gray);margin-bottom:12px;">SRG Divisions</div>
+    <div class="g3">
+      <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:16px;cursor:pointer;" onclick="showPage('concepts')">
+        <div style="font-size:20px;margin-bottom:8px;">🍽️</div>
+        <div style="font-family:var(--font-display);font-size:16px;font-weight:600;margin-bottom:4px;">SRG Restaurants</div>
+        <div style="font-size:12px;color:var(--gray);">24 original concepts from fine dining to fast-casual, events, and lifestyle.</div>
+      </div>
+      <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:16px;cursor:pointer;" onclick="showPage('technology')">
+        <div style="font-size:20px;margin-bottom:8px;">🤖</div>
+        <div style="font-family:var(--font-display);font-size:16px;font-weight:600;margin-bottom:4px;">SRG Technology</div>
+        <div style="font-size:12px;color:var(--gray);">ExecuCore OS, Sharkey AI, Sharkey Serv™, Intellishelf™, Sharkey Robotics™.</div>
+      </div>
+      <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:16px;">
+        <div style="font-size:20px;margin-bottom:8px;">📺</div>
+        <div style="font-family:var(--font-display);font-size:16px;font-weight:600;margin-bottom:4px;">Sharkey Media</div>
+        <div style="font-size:12px;color:var(--gray);">In-house production studio. Docuseries, commercials, daily content. Netflix/Tyler Perry target.</div>
+      </div>
+      <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:16px;">
+        <div style="font-size:20px;margin-bottom:8px;">🚚</div>
+        <div style="font-family:var(--font-display);font-size:16px;font-weight:600;margin-bottom:4px;">Sharkey Logistics</div>
+        <div style="font-size:12px;color:var(--gray);">On-campus distribution center. AI-powered supply chain for all concepts and franchise locations.</div>
+      </div>
+      <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:16px;cursor:pointer;" onclick="showPage('academy')">
+        <div style="font-size:20px;margin-bottom:8px;">🎓</div>
+        <div style="font-family:var(--font-display);font-size:16px;font-weight:600;margin-bottom:4px;">Sharkey Academy</div>
+        <div style="font-size:12px;color:var(--gray);">501(c)(3) nonprofit. Free culinary, business, AI, and coding education for underserved youth.</div>
+      </div>
+      <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:16px;">
+        <div style="font-size:20px;margin-bottom:8px;">🛡️</div>
+        <div style="font-family:var(--font-display);font-size:16px;font-weight:600;margin-bottom:4px;">SRG Protective Services</div>
+        <div style="font-size:12px;color:var(--gray);">MMA-trained licensed armed security. Georgia armed security license + CCW required.</div>
+      </div>
+    </div>
+
+    <div style="background:var(--navy2);border:1px solid rgba(6,182,212,0.2);border-radius:8px;padding:20px;text-align:center;">
+      <div class="ey" style="color:var(--cyan2);margin-bottom:8px;">Why "The Google of Restaurants"</div>
+      <div style="font-size:13px;color:var(--gray);line-height:1.7;max-width:700px;margin:0 auto;">Google didn't just build a search engine. They built the infrastructure the world runs on. SRG isn't just building restaurants — we're building the operating system, AI intelligence, computer vision inventory, autonomous robotics, FOH tablet technology, and the Academy that trains the next generation of operators. Every piece feeds every other piece. One ecosystem. Built to dominate an entire industry.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONCEPTS -->
+<div id="page-concepts" class="page">
+  <div class="section">
+    <div id="clv">
+      <div class="ey" style="color:var(--blue3);">Brand Portfolio</div>
+      <h2 class="pt">24 Original Concepts</h2>
+      <p class="ps">Click any concept for full details. All original IP — no acquired brands.</p>
+      <div class="fb">
+        <button class="filt active" onclick="filterC('all',this)">All 24</button>
+        <button class="filt" onclick="filterC('core',this)">Core</button>
+        <button class="filt" onclick="filterC('premium',this)">Premium</button>
+        <button class="filt" onclick="filterC('viral',this)">Viral</button>
+        <button class="filt" onclick="filterC('cuisine',this)">Cuisine</button>
+        <button class="filt" onclick="filterC('experience',this)">Experience</button>
+        <button class="filt" onclick="filterC('lifestyle',this)">Lifestyle</button>
+      </div>
+      <div class="cg" id="cg"></div>
+    </div>
+    <div id="cdv" class="dv">
+      <button class="bl" onclick="closeConcept()">← Back to all concepts</button>
+      <div class="dh">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <div style="width:28px;height:28px;border-radius:50%;background:rgba(26,111,212,0.2);display:flex;align-items:center;justify-content:center;font-size:11px;color:#7ab4f5;font-weight:500;font-family:var(--font-mono);" id="dnum"></div>
+          <div id="dtag" class="ctag"></div>
+        </div>
+        <div id="dname" class="dn"></div>
+        <div id="ddesc" class="dd"></div>
+        <div id="dstats" style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:16px;"></div>
+      </div>
+      <div class="db">
+        <div class="dc"><div class="dct">Key Differentiator</div><div id="ddiff" class="dcb"></div></div>
+        <div class="dc"><div class="dct">Franchise & Expansion</div><div id="dfran" class="dcb"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CAMPUS -->
+<div id="page-campus" class="page">
+  <div class="section">
+    <div class="ey" style="color:var(--gold);">Whitehall Street Assemblage</div>
+    <h2 class="pt">443–479 Whitehall St SW<br>Atlanta, GA 30303</h2>
+    <p class="ps">Listed by King Industrial Realty. Zoned I-1. Invest Atlanta Lease Purchase Bond Program target property.</p>
+    <div class="mr">
+      <div class="mc"><div class="ml">Total SF</div><div class="mv">66,614</div><div class="ms">4 buildings</div></div>
+      <div class="mc"><div class="ml">Lot Size</div><div class="mv">2.31 ac</div><div class="ms">100,613 sq ft</div></div>
+      <div class="mc"><div class="ml">Frontage</div><div class="mv">600 ft</div><div class="ms">Whitehall St SW</div></div>
+      <div class="mc"><div class="ml">Zoning</div><div class="mv">I-1</div><div class="ms">Industrial</div></div>
+      <div class="mc"><div class="ml">Parcels</div><div class="mv">6</div><div class="ms">Combined</div></div>
+      <div class="mc"><div class="ml">Designation</div><div class="mv">OZ</div><div class="ms">Opportunity Zone</div></div>
+    </div>
+    <div class="bg">
+      <div class="bc">
+        <div class="bch"><div class="bcn">Building 1 — Main Hub</div><div class="bcna">479 Whitehall St</div><div class="bca">Parcel: 14-0085-0002-030-4</div><div class="bcsf">42,480 sf — 4 Levels + Basement</div></div>
+        <div class="bcb">
+          <div class="fl"><div class="fll">1F</div><div class="fli"><span class="ft ftb">Soul Bowl</span><span class="ft ftb">Rise & Shine</span><span class="ft ftb">Stackery</span><span class="ft">Shared Kitchen</span><span class="ft">Luxury Foyer</span></div></div>
+          <div class="fl"><div class="fll">2F</div><div class="fli"><span class="ft ftg">Grand Ballroom</span><span class="ft">Bride & Groom Suites</span></div></div>
+          <div class="fl"><div class="fll">3F</div><div class="fli"><span class="ft ftg">Chef Sharkey's</span><span class="ft">Public Dining</span><span class="ft">Members Area</span><span class="ft">Kitchen Stadium</span></div></div>
+          <div class="fl"><div class="fll">Basement</div><div class="fli"><span style="font-size:10px;color:var(--blue3);font-style:italic;">Reserved — future use</span></div></div>
+        </div>
+      </div>
+      <div class="bc">
+        <div class="bch"><div class="bcn">Building 2 — Logistics</div><div class="bcna">443 Whitehall St</div><div class="bca">Parcel: 14-0085-0002-023-9</div><div class="bcsf">9,180 sf</div></div>
+        <div class="bcb">
+          <div class="fl"><div class="fll">1F</div><div class="fli"><span class="ft ftgr">SRG Logistics</span><span class="ft ftgr">Distribution Center</span></div></div>
+          <div class="fl"><div class="fll">Rooftop</div><div class="fli"><span class="ft ftp">VIP Event Space</span><span class="ft ftp">Rooftop Dining</span></div></div>
+        </div>
+      </div>
+      <div class="bc">
+        <div class="bch"><div class="bcn">Building 3 — Tech & Media</div><div class="bcna">455 Whitehall St</div><div class="bca">Parcel: 14-0085-0002-026-2</div><div class="bcsf">5,580 sf + 1 story addition planned</div></div>
+        <div class="bcb">
+          <div class="fl"><div class="fll">All</div><div class="fli"><span class="ft ftgr">Sharkey AI</span><span class="ft ftgr">Sharkey Robotics</span><span class="ft ftp">Sharkey Media</span></div></div>
+          <div class="fl"><div class="fll">Note</div><div class="fli"><span style="font-size:10px;color:var(--blue3);font-style:italic;">One story addition planned</span></div></div>
+        </div>
+      </div>
+      <div class="bc">
+        <div class="bch"><div class="bcn">Building 4 — Academy & HQ</div><div class="bcna">475 Whitehall St</div><div class="bca">Parcel: 14-0085-0002-029-6</div><div class="bcsf">9,374 sf — 2 Stories</div></div>
+        <div class="bcb">
+          <div class="fl"><div class="fll">Floors 1–2</div><div class="fli"><span class="ft ftb">Sharkey Academy</span><span class="ft">Classrooms</span><span class="ft">Tech Labs</span><span class="ft">Gym & Wellness</span></div></div>
+          <div class="fl"><div class="fll">Top Floor</div><div class="fli"><span class="ft ftg">SRG Corporate HQ</span><span class="ft">Boardroom</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ey" style="color:var(--gray);margin-bottom:10px;">Demographics — Service Area</div>
+    <table class="tbl">
+      <thead><tr><th>Metric</th><th>0.3 Miles</th><th>0.5 Miles</th><th>1 Mile</th></tr></thead>
+      <tbody>
+        <tr><td>Total Population</td><td>1,582</td><td>6,009</td><td>19,926</td></tr>
+        <tr><td>Average Age</td><td>35</td><td>32</td><td>34</td></tr>
+        <tr><td>Total Households</td><td>813</td><td>2,218</td><td>7,034</td></tr>
+        <tr><td>Avg Household Income</td><td>$60,052</td><td>$72,435</td><td>$64,855</td></tr>
+        <tr><td>Avg House Value</td><td>$407,298</td><td>$452,050</td><td>$363,580</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- TEAM -->
+<div id="page-team" class="page">
+  <div class="section">
+    <div class="ey" style="color:var(--blue3);">Planned Corporate Structure</div>
+    <h2 class="pt">Potential Leadership Team</h2>
+    <p class="ps">Personally vetted talent with decades of multi-unit restaurant experience. Team outreach begins following funding completion.</p>
+    <div style="background:rgba(232,160,32,0.08);border:1px solid rgba(232,160,32,0.2);border-radius:8px;padding:14px 18px;margin-bottom:20px;font-size:12px;color:#f5c04a;line-height:1.6;">⚠️ All individuals listed are <strong>potential hires only</strong>. None have been formally approached, offered a position, or confirmed. This reflects the planned leadership vision for post-funding launch.</div>
+    <div class="tg" id="tg"></div>
+    <div style="margin-top:20px;background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:18px;">
+      <div class="ey" style="color:var(--gold);margin-bottom:10px;">Still Needed — Post-Funding Hires</div>
+      <div class="g4">
+        <div style="padding:10px;background:rgba(255,255,255,0.03);border-radius:6px;font-size:12px;color:var(--gray);">Corporate Executive Chef</div>
+        <div style="padding:10px;background:rgba(255,255,255,0.03);border-radius:6px;font-size:12px;color:var(--gray);">Corporate Sous Chef</div>
+        <div style="padding:10px;background:rgba(255,255,255,0.03);border-radius:6px;font-size:12px;color:var(--gray);">Corporate CPA — Tax Strategy</div>
+        <div style="padding:10px;background:rgba(255,255,255,0.03);border-radius:6px;font-size:12px;color:var(--gray);">Business Credit Strategist</div>
+        <div style="padding:10px;background:rgba(255,255,255,0.03);border-radius:6px;font-size:12px;color:var(--gray);">Legal Advisor (Retained)</div>
+        <div style="padding:10px;background:rgba(255,255,255,0.03);border-radius:6px;font-size:12px;color:var(--gray);">Academy Program Director</div>
+        <div style="padding:10px;background:rgba(255,255,255,0.03);border-radius:6px;font-size:12px;color:var(--gray);">Dean of Student Life</div>
+        <div style="padding:10px;background:rgba(255,255,255,0.03);border-radius:6px;font-size:12px;color:var(--gray);">Head of SRG Protective Services</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FINANCIALS -->
+<div id="page-financials" class="page">
+  <div class="section">
+    <div class="ey" style="color:var(--gold);">Financial Reference</div>
+    <h2 class="pt">Numbers at a Glance</h2>
+    <div class="mr">
+      <div class="mc"><div class="ml">Investor Ask</div><div class="mv" style="color:var(--gold);">$5–7M</div><div class="ms">Post Invest Atlanta</div></div>
+      <div class="mc"><div class="ml">Total Project</div><div class="mv">$18M</div><div class="ms">Full buildout</div></div>
+      <div class="mc"><div class="ml">Year 1</div><div class="mv">$10M+</div><div class="ms">5 launch brands</div></div>
+      <div class="mc"><div class="ml">Year 3</div><div class="mv">$18M+</div><div class="ms">Full portfolio</div></div>
+      <div class="mc"><div class="ml">Year 5</div><div class="mv">$26M+</div><div class="ms">Franchise scale</div></div>
+      <div class="mc"><div class="ml">EBITDA Yr 1</div><div class="mv">18–22%</div><div class="ms">Target</div></div>
+    </div>
+
+    <div class="ey" style="color:var(--gray);margin-bottom:10px;">Why $5–7M Gets an $18M Project Built — Stacked Funding</div>
+    <div class="g3" style="margin-bottom:24px;">
+      <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:14px;">
+        <div class="badge badge-blue">Mechanism 1</div>
+        <div style="font-size:13px;font-weight:500;margin-bottom:4px;">Lease Purchase Bond</div>
+        <div style="font-size:11px;color:var(--gray);line-height:1.6;">Invest Atlanta purchases Whitehall campus and leases back to SRG. City funds the real estate. Removes the largest cost from the investor raise entirely.</div>
+      </div>
+      <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:14px;">
+        <div class="badge badge-green">Mechanism 2</div>
+        <div style="font-size:13px;font-weight:500;margin-bottom:4px;">501(c)(3) Bonds — Academy</div>
+        <div style="font-size:11px;color:var(--gray);line-height:1.6;">Sharkey Academy building financed separately through nonprofit bonds. ~$3M removed from the main investor raise. Academy has its own funding path.</div>
+      </div>
+      <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:14px;">
+        <div class="badge badge-purple">Mechanism 3</div>
+        <div style="font-size:13px;font-weight:500;margin-bottom:4px;">Midwest Job Fund Grants</div>
+        <div style="font-size:11px;color:var(--gray);line-height:1.6;">Up to $7,000 per qualifying job ($40–80K salary). 100–150 employees = significant grant funding stacked on top of bonds.</div>
+      </div>
+      <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:14px;">
+        <div class="badge badge-cyan">Mechanism 4</div>
+        <div style="font-size:13px;font-weight:500;margin-bottom:4px;">New Markets Tax Credits</div>
+        <div style="font-size:11px;color:var(--gray);line-height:1.6;">Being evaluated for Whitehall address. Low-income, low-access census tract designation may qualify. Invest Atlanta is researching.</div>
+      </div>
+      <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:14px;">
+        <div class="badge badge-orange">Mechanism 5</div>
+        <div style="font-size:13px;font-weight:500;margin-bottom:4px;">Tax Allocation Districts</div>
+        <div style="font-size:11px;color:var(--gray);line-height:1.6;">Being researched for the Whitehall corridor. Additional tax abatement possible on top of all other mechanisms.</div>
+      </div>
+      <div style="background:var(--navy2);border:1px solid rgba(232,160,32,0.2);border-radius:8px;padding:14px;">
+        <div class="badge badge-gold">The Result</div>
+        <div style="font-size:13px;font-weight:500;margin-bottom:4px;">$5–7M Investor Ask</div>
+        <div style="font-size:11px;color:var(--gray);line-height:1.6;">City of Atlanta and stacked mechanisms cover the remaining $11–13M. Invest Atlanta is SRG's confirmed internal champion.</div>
+      </div>
+    </div>
+
+    <div class="g2">
+      <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:20px;">
+        <div class="ey" style="color:var(--gold);margin-bottom:14px;">$18M Total Project Breakdown</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:12px;">
+          <div><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="color:var(--gray);">Construction & buildout</span><span>$7.0M</span></div><div style="height:3px;background:rgba(255,255,255,0.06);border-radius:2px;"><div style="width:39%;height:100%;background:var(--blue);border-radius:2px;"></div></div></div>
+          <div><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="color:var(--gray);">Staffing & training</span><span>$3.5M</span></div><div style="height:3px;background:rgba(255,255,255,0.06);border-radius:2px;"><div style="width:19%;height:100%;background:var(--gold);border-radius:2px;"></div></div></div>
+          <div><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="color:var(--gray);">Equipment & infrastructure</span><span>$2.0M</span></div><div style="height:3px;background:rgba(255,255,255,0.06);border-radius:2px;"><div style="width:11%;height:100%;background:var(--green);border-radius:2px;"></div></div></div>
+          <div><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="color:var(--gray);">Technology & AI</span><span>$1.5M</span></div><div style="height:3px;background:rgba(255,255,255,0.06);border-radius:2px;"><div style="width:8%;height:100%;background:var(--purple);border-radius:2px;"></div></div></div>
+          <div><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="color:var(--gray);">Interior design</span><span>$1.25M</span></div><div style="height:3px;background:rgba(255,255,255,0.06);border-radius:2px;"><div style="width:7%;height:100%;background:var(--orange);border-radius:2px;"></div></div></div>
+          <div><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="color:var(--gray);">Working capital</span><span>$2.75M</span></div><div style="height:3px;background:rgba(255,255,255,0.06);border-radius:2px;"><div style="width:15%;height:100%;background:var(--gray);border-radius:2px;"></div></div></div>
+        </div>
+      </div>
+      <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:20px;">
+        <div class="ey" style="color:var(--gold);margin-bottom:14px;">Revenue Streams</div>
+        <div style="display:flex;flex-direction:column;gap:8px;font-size:12px;color:var(--gray);">
+          <div style="padding:8px;background:rgba(255,255,255,0.03);border-radius:5px;">Restaurant sales — dine-in, to-go, delivery</div>
+          <div style="padding:8px;background:rgba(255,255,255,0.03);border-radius:5px;">Franchising — fees, royalties, expansion</div>
+          <div style="padding:8px;background:rgba(255,255,255,0.03);border-radius:5px;">Events & weddings — Grand Ballroom, The Concours</div>
+          <div style="padding:8px;background:rgba(255,255,255,0.03);border-radius:5px;">Technology licensing — ExecuCore OS, Sharkey AI</div>
+          <div style="padding:8px;background:rgba(255,255,255,0.03);border-radius:5px;">Sharkey Media — content, docuseries</div>
+          <div style="padding:8px;background:rgba(255,255,255,0.03);border-radius:5px;">Membership fees — Chef Sharkey's, The Concours</div>
+          <div style="padding:8px;background:rgba(255,255,255,0.03);border-radius:5px;">Car condo & garage rentals — The Concours</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REAL ESTATE -->
+<div id="page-realestate" class="page">
+  <div class="section">
+    <div class="ey" style="color:var(--green2);">Real Estate Investment</div>
+    <h2 class="pt">Prime Land in the Heart<br>of Atlanta's Future.</h2>
+    <p class="ps">Two investor conversations are available. Some investors want restaurant equity. Others want real estate. Both conversations are open.</p>
+
+    <div style="background:linear-gradient(135deg,var(--navy2),var(--navy));border:1px solid rgba(29,158,117,0.3);border-radius:10px;padding:28px;margin-bottom:20px;">
+      <div class="ey" style="color:var(--green2);margin-bottom:12px;">Location Context — Same Street as $6B+ in Development</div>
+      <div class="g4">
+        <div style="padding:12px;background:rgba(255,255,255,0.04);border-radius:6px;"><div style="font-size:11px;color:var(--green2);margin-bottom:3px;">1 Block Away</div><div style="font-size:13px;font-weight:500;">Atlanta City Hall</div></div>
+        <div style="padding:12px;background:rgba(255,255,255,0.04);border-radius:6px;"><div style="font-size:11px;color:var(--green2);margin-bottom:3px;">2 Blocks Away</div><div style="font-size:13px;font-weight:500;">Georgia State Capitol</div></div>
+        <div style="padding:12px;background:rgba(255,255,255,0.04);border-radius:6px;"><div style="font-size:11px;color:var(--green2);margin-bottom:3px;">Walking Distance</div><div style="font-size:13px;font-weight:500;">Mercedes-Benz Stadium</div></div>
+        <div style="padding:12px;background:rgba(255,255,255,0.04);border-radius:6px;"><div style="font-size:11px;color:var(--green2);margin-bottom:3px;">Walking Distance</div><div style="font-size:13px;font-weight:500;">State Farm Arena</div></div>
+        <div style="padding:12px;background:rgba(255,255,255,0.04);border-radius:6px;"><div style="font-size:11px;color:var(--green2);margin-bottom:3px;">Direct Connection</div><div style="font-size:13px;font-weight:500;">Extension of Peachtree St</div></div>
+        <div style="padding:12px;background:rgba(255,255,255,0.04);border-radius:6px;"><div style="font-size:11px;color:var(--green2);margin-bottom:3px;">Designation</div><div style="font-size:13px;font-weight:500;">Opportunity Zone</div></div>
+        <div style="padding:12px;background:rgba(255,255,255,0.04);border-radius:6px;"><div style="font-size:11px;color:var(--green2);margin-bottom:3px;">Highway Access</div><div style="font-size:13px;font-weight:500;">I-20 · I-75/85</div></div>
+        <div style="padding:12px;background:rgba(255,255,255,0.04);border-radius:6px;"><div style="font-size:11px;color:var(--green2);margin-bottom:3px;">District</div><div style="font-size:13px;font-weight:500;">Ring of Fire Corridor</div></div>
+      </div>
+    </div>
+
+    <div class="g2" style="margin-bottom:20px;">
+      <div style="background:var(--navy2);border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+        <div style="background:var(--navy3);padding:14px 18px;border-bottom:1px solid var(--border);">
+          <div class="ey" style="color:var(--gray);margin-bottom:4px;">Forge Atlanta — Same Street</div>
+          <div style="font-family:var(--font-display);font-size:18px;font-weight:600;">$756M Phase 1</div>
+        </div>
+        <div style="padding:14px 18px;font-size:12px;display:flex;flex-direction:column;gap:6px;">
+          <div style="display:flex;justify-content:space-between;"><span style="color:var(--gray);">Developer</span><span>Webstar Technology Group</span></div>
+          <div style="display:flex;justify-content:space-between;"><span style="color:var(--gray);">Location</span><span>Ted Turner Dr & Whitehall St SW</span></div>
+          <div style="display:flex;justify-content:space-between;"><span style="color:var(--gray);">Phase 1</span><span>300-room hotel · 600 condos · 60,500 sf retail</span></div>
+          <div style="display:flex;justify-content:space-between;"><span style="color:var(--gray);">Incentives</span><span style="color:var(--green2);">$224M Fulton County package</span></div>
+          <div style="display:flex;justify-content:space-between;"><span style="color:var(--gray);">Economic impact</span><span style="color:var(--green2);">$7.4B projected</span></div>
+          <div style="display:flex;justify-content:space-between;"><span style="color:var(--gray);">Groundbreaking</span><span>Mid-2026 target</span></div>
+          <div style="display:flex;justify-content:space-between;"><span style="color:var(--gray);">Total entitlement</span><span>Up to 15M sq ft</span></div>
+        </div>
+      </div>
+      <div style="background:var(--navy2);border:1px solid rgba(29,158,117,0.3);border-radius:10px;overflow:hidden;">
+        <div style="background:#0a1830;padding:14px 18px;border-bottom:1px solid rgba(29,158,117,0.2);">
+          <div class="ey" style="color:var(--green2);margin-bottom:4px;">Centennial Yards — Same Corridor</div>
+          <div style="font-family:var(--font-display);font-size:18px;font-weight:600;">$5B Development</div>
+        </div>
+        <div style="padding:14px 18px;font-size:12px;display:flex;flex-direction:column;gap:6px;">
+          <div style="display:flex;justify-content:space-between;"><span style="color:var(--gray);">Developer</span><span>CIM Group + Tony Ressler</span></div>
+          <div style="display:flex;justify-content:space-between;"><span style="color:var(--gray);">Size</span><span>50 acres — The Gulch</span></div>
+          <div style="display:flex;justify-content:space-between;"><span style="color:var(--gray);">Minority commitment</span><span style="color:var(--green2);">38% = $1.9B to minority/female</span></div>
+          <div style="display:flex;justify-content:space-between;"><span style="color:var(--gray);">Notable investors</span><span>Killer Mike · T.I. · Usher · 2 Chainz</span></div>
+          <div style="display:flex;justify-content:space-between;"><span style="color:var(--gray);">City incentives</span><span>$1.9B tax incentives</span></div>
+          <div style="display:flex;justify-content:space-between;"><span style="color:var(--gray);">Status</span><span style="color:var(--green2);">Under construction — 2026 FIFA deadline</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="g2" style="margin-bottom:20px;">
+      <div style="background:var(--navy2);border:1px solid rgba(26,111,212,0.3);border-radius:10px;padding:20px;">
+        <div class="ey" style="color:var(--blue3);margin-bottom:10px;">Track 1 — Restaurant Investor</div>
+        <div style="font-size:13px;color:var(--gray);line-height:1.7;">Invest in concept-level equity through the Founders Circle framework. Participate in franchise royalties, unit cash flow, and concept exit value. Soul Bowl, Rise & Shine, and Stackery available at $2M and $5M investment lanes.</div>
+      </div>
+      <div style="background:var(--navy2);border:1px solid rgba(29,158,117,0.3);border-radius:10px;padding:20px;">
+        <div class="ey" style="color:var(--green2);margin-bottom:10px;">Track 2 — Real Estate Investor</div>
+        <div style="font-size:13px;color:var(--gray);line-height:1.7;">Invest in the Whitehall campus — 66,614 sf on 2.31 acres in a federally designated Opportunity Zone, inside the Forge Atlanta development corridor, one block from Atlanta City Hall. Land appreciates independent of restaurant performance.</div>
+      </div>
+    </div>
+
+    <div style="background:linear-gradient(135deg,var(--navy2),var(--navy));border:1px solid rgba(232,160,32,0.2);border-radius:10px;padding:24px;text-align:center;">
+      <div style="font-family:var(--font-display);font-size:clamp(18px,2.5vw,26px);font-weight:600;margin-bottom:10px;">To build the largest minority-owned restaurant group in American history — starting from prime real estate in the heart of Atlanta's next billion-dollar development corridor.</div>
+      <div style="font-family:var(--font-mono);font-size:12px;color:var(--gold);">Built, not bought.</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOUNDERS CIRCLE -->
+<div id="page-founders" class="page">
+  <div class="section">
+    <div style="background:linear-gradient(135deg,var(--navy2),var(--navy));border:1px solid rgba(232,160,32,0.3);border-radius:10px;padding:32px;margin-bottom:24px;text-align:center;">
+      <div class="ey" style="color:var(--gold);margin-bottom:10px;">Confidential — Authorized Recipients Only</div>
+      <div class="pt">SRG Founders Circle</div>
+      <div style="font-size:14px;color:var(--gray);margin-bottom:20px;">Concept Equity & Growth Framework</div>
+      <div style="display:inline-block;background:rgba(232,160,32,0.1);border:1px solid rgba(232,160,32,0.3);border-radius:8px;padding:14px 28px;">
+        <div style="font-family:var(--font-display);font-size:18px;font-style:italic;color:var(--gold);">"Early investors win early. The platform wins long-term."</div>
+        <div style="font-size:11px;color:var(--gray);margin-top:4px;">— William Sharkey, Founder</div>
+      </div>
+    </div>
+
+    <div class="g2" style="margin-bottom:20px;">
+      <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:20px;">
+        <div class="ey" style="color:var(--gold);margin-bottom:8px;">Core Principle</div>
+        <div style="font-size:13px;color:var(--gray);line-height:1.7;">Early capital participates in <strong style="color:var(--white);">concepts</strong> — not the platform that creates them. The campus, academy, AI systems, logistics, and media are retained by SRG.</div>
+      </div>
+      <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:20px;">
+        <div class="ey" style="color:var(--gold);margin-bottom:8px;">Phase I Concepts Available</div>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <div style="display:flex;justify-content:space-between;font-size:12px;padding:6px 8px;background:rgba(26,111,212,0.08);border-radius:4px;"><span>#3 Soul Bowl</span><span style="color:var(--blue3);">6.0% royalty</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;padding:6px 8px;background:rgba(26,111,212,0.08);border-radius:4px;"><span>#4 Rise & Shine</span><span style="color:var(--blue3);">5.5% royalty</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;padding:6px 8px;background:rgba(26,111,212,0.08);border-radius:4px;"><span>#5 Stackery</span><span style="color:var(--blue3);">6.0% royalty</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="g2" style="margin-bottom:20px;">
+      <div class="lane">
+        <div class="lane-header">
+          <div class="ey" style="color:var(--gray);margin-bottom:4px;">Lane 1 — Early Entry</div>
+          <div class="lane-amount">$2,000,000</div>
+        </div>
+        <div class="lane-body">
+          <div class="lane-row"><span class="lane-label">Equity</span><span>4–6% minority</span></div>
+          <div class="lane-row"><span class="lane-label">Buyout trigger</span><span>30 operating units</span></div>
+          <div class="lane-row"><span class="lane-label">Illustrative buyout</span><span style="color:var(--green2);">$6M–$8M</span></div>
+          <div class="lane-row"><span class="lane-label">Return multiple</span><span style="color:var(--green2);">3x–4x</span></div>
+          <div class="lane-row"><span class="lane-label">Governance</span><span>Economic only</span></div>
+        </div>
+      </div>
+      <div class="lane" style="border-color:rgba(26,111,212,0.4);">
+        <div class="lane-header" style="background:#0a1830;border-color:rgba(26,111,212,0.3);">
+          <div class="ey" style="color:var(--blue3);margin-bottom:4px;">Lane 2 — Growth Entry</div>
+          <div class="lane-amount">$5,000,000</div>
+        </div>
+        <div class="lane-body">
+          <div class="lane-row"><span class="lane-label">Equity</span><span>10–12% minority</span></div>
+          <div class="lane-row"><span class="lane-label">Buyout trigger</span><span>50 operating units</span></div>
+          <div class="lane-row"><span class="lane-label">Illustrative buyout</span><span style="color:var(--green2);">$10M–$12M</span></div>
+          <div class="lane-row"><span class="lane-label">Return multiple</span><span style="color:var(--green2);">2x–2.4x</span></div>
+          <div class="lane-row"><span class="lane-label">Governance</span><span>Economic only</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ey" style="color:var(--gray);margin-bottom:10px;">Illustrative Annual Returns Before Buyout — Soul Bowl Basis ($5M revenue × 6% = $300K royalty/unit)</div>
+    <div style="overflow-x:auto;margin-bottom:16px;">
+      <table class="tbl">
+        <thead><tr><th>Open Units</th><th>Annual Royalty Pool</th><th>Lane 1 Annual (5%)</th><th>Lane 2 Annual (11%)</th><th>Lane 1 Cumulative</th><th>Lane 2 Cumulative</th></tr></thead>
+        <tbody>
+          <tr><td>5 units</td><td>$1,500,000</td><td style="color:var(--green2);">$75,000</td><td style="color:var(--green2);">$165,000</td><td>$75,000</td><td>$165,000</td></tr>
+          <tr><td>10 units</td><td>$3,000,000</td><td style="color:var(--green2);">$150,000</td><td style="color:var(--green2);">$330,000</td><td>$225,000</td><td>$495,000</td></tr>
+          <tr><td>20 units</td><td>$6,000,000</td><td style="color:var(--green2);">$300,000</td><td style="color:var(--green2);">$660,000</td><td>$825,000</td><td>$1,485,000</td></tr>
+          <tr style="background:rgba(26,111,212,0.08);"><td><strong>30 units — Lane 1 Buyout</strong></td><td>$9,000,000</td><td style="color:var(--gold);font-weight:500;">$450,000</td><td style="color:var(--green2);">$990,000</td><td style="color:var(--gold);font-weight:500;">$1,275,000+</td><td>$2,475,000+</td></tr>
+          <tr style="background:rgba(29,158,117,0.06);"><td><strong>50 units — Lane 2 Buyout</strong></td><td>$15,000,000</td><td style="color:var(--gray);">— exited</td><td style="color:var(--gold);font-weight:500;">$1,650,000</td><td style="color:var(--gray);">— exited</td><td style="color:var(--gold);font-weight:500;">$4,125,000+</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="g2">
+      <div style="background:rgba(29,158,117,0.06);border:1px solid rgba(29,158,117,0.2);border-radius:8px;padding:16px;">
+        <div class="ey" style="color:var(--green2);margin-bottom:8px;">What Equity Includes</div>
+        <div style="display:flex;flex-direction:column;gap:5px;font-size:12px;color:var(--gray);">
+          <div>• Unit-level cash flow participation</div>
+          <div>• Brand-specific franchise royalties</div>
+          <div>• Economic upside — early and mid-stage growth</div>
+          <div>• Defined buyout at favorable multiple</div>
+        </div>
+      </div>
+      <div style="background:rgba(153,53,86,0.06);border:1px solid rgba(153,53,86,0.2);border-radius:8px;padding:16px;">
+        <div class="ey" style="color:#f09fbf;margin-bottom:8px;">What Equity Does NOT Include</div>
+        <div style="display:flex;flex-direction:column;gap:5px;font-size:12px;color:var(--gray);">
+          <div>• SRG campus or real estate</div>
+          <div>• Sharkey Academy</div>
+          <div>• AI systems or operating platform</div>
+          <div>• Media, logistics, or robotics</div>
+          <div>• Other or future SRG concepts</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TECHNOLOGY HUB -->
+<div id="page-technology" class="page">
+  <div class="section">
+    <div id="tech-hub">
+      <div class="ey" style="color:var(--cyan2);">SRG Technology Division</div>
+      <h2 class="pt">The Autonomous<br>Restaurant Stack.</h2>
+      <p class="ps">Every piece of technology SRG built — from the AI operating system to the humanoid robot. All working together. All proprietary. All feeding each other.</p>
+
+      <div class="tech-grid">
+        <div class="tech-tile" style="background:linear-gradient(135deg,#0d1f3c,#0a1628);border:1px solid rgba(37,99,235,0.3);" onclick="showTech('execucore')">
+          <div class="tt-icon">⚙️</div>
+          <div class="tt-name" style="color:#60a5fa;">ExecuCore OS™</div>
+          <div class="tt-tag" style="color:#60a5fa;">Powered by ExecuCore · v13.1 — Live</div>
+          <div class="tt-desc" style="color:rgba(255,255,255,0.7);">The world's first autonomous restaurant operating system. Already built and working. Powers every SRG location from Day 1. Licensed to all franchise owners. Then to every restaurant in America.</div>
+        </div>
+        <div class="tech-tile" style="background:linear-gradient(135deg,#1a0f3c,#0a0a28);border:1px solid rgba(124,58,237,0.3);" onclick="showTech('sharkey-ai')">
+          <div class="tt-icon">🧠</div>
+          <div class="tt-name" style="color:#c4b5fd;">Sharkey AI™</div>
+          <div class="tt-tag" style="color:#c4b5fd;">Intelligence Layer · 7 Agents · Orchestrator</div>
+          <div class="tt-desc" style="color:rgba(255,255,255,0.7);">The brain powering ExecuCore OS. Multi-agent architecture where each agent is expert at one job. Mr. Sharkey answers any operational question in plain language. $300K annual EBITDA lift per unit.</div>
+        </div>
+        <div class="tech-tile" style="background:linear-gradient(135deg,#0d2e1f,#0a1628);border:1px solid rgba(16,185,129,0.3);" onclick="showTech('intellishelf')">
+          <div class="tt-icon">👁️</div>
+          <div class="tt-name" style="color:#6dd9b5;">Intellishelf™</div>
+          <div class="tt-tag" style="color:#6dd9b5;">Computer Vision · 6 Camera Points · 99%+ Accuracy</div>
+          <div class="tt-desc" style="color:rgba(255,255,255,0.7);">AI that physically sees inside every cooler, freezer, and dry storage area. Tracks inventory without anyone counting. Daily food cost accuracy. No other system on earth does this.</div>
+        </div>
+        <div class="tech-tile" style="background:linear-gradient(135deg,#2d1a0d,#1a0a00);border:1px solid rgba(249,115,22,0.3);" onclick="showTech('sharkey-serv')">
+          <div class="tt-icon">📱</div>
+          <div class="tt-name" style="color:#fdba74;">Sharkey Serv™</div>
+          <div class="tt-tag" style="color:#fdba74;">FOH Tablet · Voice Recognition · Multilingual</div>
+          <div class="tt-desc" style="color:rgba(255,255,255,0.7);">Server tablet that listens to every customer in any language, tracks each seat's voice independently, handles order changes, suggests upsells, and takes over the conversation when a language barrier exists.</div>
+        </div>
+        <div class="tech-tile" style="background:linear-gradient(135deg,#1f0d2e,#150a20);border:1px solid rgba(167,139,250,0.3);" onclick="showTech('robotics')">
+          <div class="tt-icon">🤖</div>
+          <div class="tt-name" style="color:#c4b5fd;">Sharkey Robotics™</div>
+          <div class="tt-tag" style="color:#c4b5fd;">Humanoid · 3 Jobs · 24-Hour Coverage</div>
+          <div class="tt-desc" style="color:rgba(255,255,255,0.7);">One humanoid robot handles receiving, scanning, shelving, runner duties, and full nightly inventory. 3am physical count every night. Hardware partnership with chef friend building humanoids for tree cutting.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TECH DETAIL VIEWS -->
+    <div id="tech-execucore" class="tdv">
+      <button class="bl" onclick="closeTech()">← Back to Technology</button>
+      <div class="ey" style="color:#60a5fa;">ExecuCore OS™ — Powered by ExecuCore</div>
+      <h2 class="pt" style="color:#60a5fa;">Already Built.<br>Already Working.</h2>
+      <p class="ps">Version 13.1. Live and deployed. Demo environment running T's Brunch Bar across 5 locations. Every SRG restaurant runs this from Day 1.</p>
+      <div class="mr">
+        <div class="mc"><div class="ml">Version</div><div class="mv" style="color:#60a5fa;">v13.1</div></div>
+        <div class="mc"><div class="ml">Series A</div><div class="mv" style="color:#60a5fa;">$35M</div></div>
+        <div class="mc"><div class="ml">Yr 5 ARR</div><div class="mv" style="color:#60a5fa;">$120M+</div></div>
+        <div class="mc"><div class="ml">SaaS Margin</div><div class="mv" style="color:#60a5fa;">80–85%</div></div>
+        <div class="mc"><div class="ml">Per Unit/Mo</div><div class="mv" style="color:#60a5fa;">$1–1.5K</div></div>
+        <div class="mc"><div class="ml">SRG Units</div><div class="mv" style="color:#60a5fa;">1,500</div></div>
+      </div>
+      <div class="g3">
+        <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:14px;"><div class="badge badge-blue">✅ Live</div><div style="font-size:13px;font-weight:500;margin-bottom:4px;">Owner Dashboard</div><div style="font-size:11px;color:var(--gray);line-height:1.6;">Multi-unit portfolio view. All locations with prime cost, MTD sales, alerts. Drill into any location.</div></div>
+        <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:14px;"><div class="badge badge-blue">✅ Live</div><div style="font-size:13px;font-weight:500;margin-bottom:4px;">GM Dashboard</div><div style="font-size:11px;color:var(--gray);line-height:1.6;">Individual location P&L, weekly labor, food cost, prime cost tracking. Daily workbook entry.</div></div>
+        <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:14px;"><div class="badge badge-blue">✅ Live</div><div style="font-size:13px;font-weight:500;margin-bottom:4px;">Vendor Tracker</div><div style="font-size:11px;color:var(--gray);line-height:1.6;">Invoice scanning via AI. Drag, drop, or paste invoice. Auto-populates inventory and recipe cards.</div></div>
+        <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:14px;"><div class="badge badge-blue">✅ Live</div><div style="font-size:13px;font-weight:500;margin-bottom:4px;">Payroll Module</div><div style="font-size:11px;color:var(--gray);line-height:1.6;">Pay period reports. Hourly with OT calculation. Salaried pro-rated. Downloadable and printable.</div></div>
+        <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:14px;"><div class="badge badge-blue">✅ Live</div><div style="font-size:13px;font-weight:500;margin-bottom:4px;">Recipe Cards</div><div style="font-size:11px;color:var(--gray);line-height:1.6;">Linked to live invoice prices. Food cost per dish calculated automatically. Updates when prices change.</div></div>
+        <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:14px;"><div class="badge badge-blue">✅ Live</div><div style="font-size:13px;font-weight:500;margin-bottom:4px;">SMS Pulse</div><div style="font-size:11px;color:var(--gray);line-height:1.6;">Automated text briefings. Morning brief, real-time alerts, end-of-day summary. No login required.</div></div>
+        <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:14px;"><div class="badge badge-blue">✅ Live</div><div style="font-size:13px;font-weight:500;margin-bottom:4px;">Purchasing Agent</div><div style="font-size:11px;color:var(--gray);line-height:1.6;">Cross-references orders vs inventory vs recipe usage vs sales. Catches over-ordering automatically.</div></div>
+        <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:14px;"><div class="badge badge-blue">✅ Live</div><div style="font-size:13px;font-weight:500;margin-bottom:4px;">Cost Agent</div><div style="font-size:11px;color:var(--gray);line-height:1.6;">Price spike/drop detection. Freeze recommendations. Special suggestions. Quarterly reprice signals.</div></div>
+        <div style="background:var(--navy2);border:1px solid rgba(6,182,212,0.2);border-radius:8px;padding:14px;"><div class="badge badge-cyan">🔨 In Progress</div><div style="font-size:13px;font-weight:500;margin-bottom:4px;">Ordering Agent</div><div style="font-size:11px;color:var(--gray);line-height:1.6;">Auto-generates truck orders. Cross-references inventory + sales + catering calendar. Places orders automatically.</div></div>
+      </div>
+    </div>
+
+    <div id="tech-sharkey-ai" class="tdv">
+      <button class="bl" onclick="closeTech()">← Back to Technology</button>
+      <div class="ey" style="color:#c4b5fd;">Sharkey AI™</div>
+      <h2 class="pt" style="color:#c4b5fd;">The Intelligence Layer.</h2>
+      <p class="ps">Seven specialized agents. Each expert at one job. Each feeds the others. Mr. Sharkey orchestrates everything into one answer — in plain language, voice or text.</p>
+      <div class="g2" style="margin-bottom:20px;">
+        <div style="background:var(--navy2);border:1px solid rgba(239,68,68,0.15);border-radius:8px;padding:18px;">
+          <div class="ey" style="color:var(--red2);margin-bottom:8px;">Without Sharkey AI</div>
+          <div style="display:flex;flex-direction:column;gap:5px;font-size:12px;">
+            <div style="display:flex;justify-content:space-between;"><span style="color:var(--gray);">Food Cost</span><span style="color:var(--red2);">32%</span></div>
+            <div style="display:flex;justify-content:space-between;"><span style="color:var(--gray);">Labor Cost</span><span style="color:var(--red2);">28%</span></div>
+            <div style="display:flex;justify-content:space-between;"><span style="color:var(--gray);">Prime Cost</span><span style="color:var(--red2);">60%</span></div>
+            <div style="display:flex;justify-content:space-between;"><span style="color:var(--gray);">Net Margin</span><span style="color:var(--red2);">~5%</span></div>
+          </div>
+        </div>
+        <div style="background:var(--navy2);border:1px solid rgba(16,185,129,0.2);border-radius:8px;padding:18px;">
+          <div class="ey" style="color:var(--green2);margin-bottom:8px;">With Sharkey AI</div>
+          <div style="display:flex;flex-direction:column;gap:5px;font-size:12px;">
+            <div style="display:flex;justify-content:space-between;"><span style="color:var(--gray);">Food Cost</span><span style="color:var(--green2);">29%</span></div>
+            <div style="display:flex;justify-content:space-between;"><span style="color:var(--gray);">Labor Cost</span><span style="color:var(--green2);">27%</span></div>
+            <div style="display:flex;justify-content:space-between;"><span style="color:var(--gray);">Prime Cost</span><span style="color:var(--green2);">56%</span></div>
+            <div style="display:flex;justify-content:space-between;"><span style="color:var(--gray);">Net Margin</span><span style="color:var(--green2);">~10%</span></div>
+          </div>
+          <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border);font-size:13px;color:var(--green2);font-weight:500;">$300K annual EBITDA lift per unit</div>
+        </div>
+      </div>
+      <div class="g3">
+        <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:14px;border-top:2px solid var(--blue);"><div style="font-size:18px;margin-bottom:6px;">📦</div><div style="font-size:13px;font-weight:500;margin-bottom:3px;">Purchasing Agent</div><div style="font-size:11px;color:var(--gray);">Over-ordering detection · inventory vs sales reconciliation</div></div>
+        <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:14px;border-top:2px solid var(--gold);"><div style="font-size:18px;margin-bottom:6px;">💰</div><div style="font-size:13px;font-weight:500;margin-bottom:3px;">Cost Agent</div><div style="font-size:11px;color:var(--gray);">Price spike/drop alerts · freeze recommendations · specials suggestions</div></div>
+        <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:14px;border-top:2px solid var(--green);"><div style="font-size:18px;margin-bottom:6px;">👥</div><div style="font-size:13px;font-weight:500;margin-bottom:3px;">Labor Agent</div><div style="font-size:11px;color:var(--gray);">OT detection · overstaffing · SPMH optimization</div></div>
+        <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:14px;border-top:2px solid var(--purple);"><div style="font-size:18px;margin-bottom:6px;">📊</div><div style="font-size:13px;font-weight:500;margin-bottom:3px;">Sales Pattern Agent</div><div style="font-size:11px;color:var(--gray);">Holiday trends · slow day prediction · anomaly detection</div></div>
+        <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:14px;border-top:2px solid var(--red);"><div style="font-size:18px;margin-bottom:6px;">🎯</div><div style="font-size:13px;font-weight:500;margin-bottom:3px;">Prime Cost Agent</div><div style="font-size:11px;color:var(--gray);">Real-time prime cost monitoring · mid-week projection · fix prescription</div></div>
+        <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:14px;border-top:2px solid var(--cyan);"><div style="font-size:18px;margin-bottom:6px;">🛒</div><div style="font-size:13px;font-weight:500;margin-bottom:3px;">Ordering Agent</div><div style="font-size:11px;color:var(--gray);">Auto truck orders · catering calendar integration · spoilage prevention</div></div>
+        <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:14px;border-top:2px solid var(--orange);"><div style="font-size:18px;margin-bottom:6px;">🏪</div><div style="font-size:13px;font-weight:500;margin-bottom:3px;">Location Health Agent</div><div style="font-size:11px;color:var(--gray);">Owner-level portfolio scoring · GM performance ranking · intervention signals</div></div>
+      </div>
+    </div>
+
+    <div id="tech-intellishelf" class="tdv">
+      <button class="bl" onclick="closeTech()">← Back to Technology</button>
+      <div class="ey" style="color:var(--green2);">Intellishelf™</div>
+      <h2 class="pt" style="color:var(--green2);">The System That<br>Sees the Food.</h2>
+      <p class="ps">Computer vision AI that physically sees inside every cooler, freezer, and dry storage area. 99%+ food cost accuracy. No other restaurant technology company on earth does this.</p>
+      <div style="background:var(--navy2);border:1px solid rgba(29,158,117,0.2);border-radius:8px;padding:18px;margin-bottom:20px;">
+        <div style="font-size:12px;color:var(--gray);line-height:1.7;">"Like having a manager in your cooler 24/7 — counting inventory, tracking usage, and telling you exactly what to prep, order, and fix. Without paying a salary."</div>
+      </div>
+      <div class="g3">
+        <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:14px;"><div style="font-size:20px;margin-bottom:8px;">📦</div><div style="font-size:13px;font-weight:500;margin-bottom:4px;">Receiving Dock</div><div class="badge badge-purple" style="margin-bottom:6px;">Humanoid handles</div><div style="font-size:11px;color:var(--gray);line-height:1.6;">Robot reads every label, verifies vs PO, rejects wrong product, flags temperature violations and short weights.</div></div>
+        <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:14px;"><div style="font-size:20px;margin-bottom:8px;">🥩</div><div style="font-size:13px;font-weight:500;margin-bottom:4px;">Walk-In Coolers & Freezers</div><div class="badge badge-green" style="margin-bottom:6px;">24/7 watching</div><div style="font-size:11px;color:var(--gray);line-height:1.6;">Cameras watch every shelf. Every removal detected. Runner Bot scans items out. Unscanned removals flagged immediately.</div></div>
+        <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:14px;"><div style="font-size:20px;margin-bottom:8px;">🌾</div><div style="font-size:13px;font-weight:500;margin-bottom:4px;">Dry Storage</div><div class="badge badge-green" style="margin-bottom:6px;">24/7 watching</div><div style="font-size:11px;color:var(--gray);line-height:1.6;">All dry goods tracked. Reorder levels monitored automatically. Scanned in and out.</div></div>
+        <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:14px;"><div style="font-size:20px;margin-bottom:8px;">🔪</div><div style="font-size:13px;font-weight:500;margin-bottom:4px;">Prep Station</div><div class="badge badge-gold" style="margin-bottom:6px;">Smart prep camera</div><div style="font-size:11px;color:var(--gray);line-height:1.6;">AI watches every prep station. Yield tracking, portion consistency, cross-contamination alerts, food safety compliance.</div></div>
+        <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:14px;"><div style="font-size:20px;margin-bottom:8px;">🍽️</div><div style="font-size:13px;font-weight:500;margin-bottom:4px;">Expo Window</div><div class="badge badge-gold" style="margin-bottom:6px;">Portion control AI</div><div style="font-size:11px;color:var(--gray);line-height:1.6;">Every plate captured before the dining room. AI flags over-portioning vs recipe card standard in real time.</div></div>
+        <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:14px;"><div style="font-size:20px;margin-bottom:8px;">🗑️</div><div style="font-size:13px;font-weight:500;margin-bottom:4px;">Waste Station</div><div class="badge badge-red" style="margin-bottom:6px;">Disposal tracking</div><div style="font-size:11px;color:var(--gray);line-height:1.6;">Everything discarded is visually logged and categorized. Excessive waste triggers immediate manager alert.</div></div>
+      </div>
+    </div>
+
+    <div id="tech-sharkey-serv" class="tdv">
+      <button class="bl" onclick="closeTech()">← Back to Technology</button>
+      <div class="ey" style="color:#fdba74;">Sharkey Serv™</div>
+      <h2 class="pt" style="color:#fdba74;">Every Language.<br>Every Seat.<br>Every Change.</h2>
+      <p class="ps">The FOH server tablet that eliminates order errors, language barriers, and missed upsell opportunities — simultaneously.</p>
+      <div class="g3">
+        <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:16px;">
+          <div style="font-size:20px;margin-bottom:8px;">🎙️</div>
+          <div style="font-size:13px;font-weight:500;margin-bottom:6px;">Per-Seat Voice Recognition</div>
+          <div style="font-size:12px;color:var(--gray);line-height:1.7;">The tablet tracks each seat's voice independently throughout the entire ordering process. Seat 1 can change their order 3 times — the system knows it's seat 1 every time and updates accordingly. The most common real-world ordering scenario, finally solved.</div>
+        </div>
+        <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:16px;">
+          <div style="font-size:20px;margin-bottom:8px;">🌍</div>
+          <div style="font-size:13px;font-weight:500;margin-bottom:6px;">Multilingual Ordering</div>
+          <div style="font-size:12px;color:var(--gray);line-height:1.7;">Guest speaks Spanish, Mandarin, Portuguese — any language. AI translates to English in real time. Kitchen ticket prints in English. Server sees English on screen. Guest experiences the restaurant in their own language with full comfort.</div>
+        </div>
+        <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:16px;">
+          <div style="font-size:20px;margin-bottom:8px;">🤝</div>
+          <div style="font-size:13px;font-weight:500;margin-bottom:6px;">Language Takeover</div>
+          <div style="font-size:12px;color:var(--gray);line-height:1.7;">When a server doesn't speak the guest's language, Sharkey Serv takes over the conversation entirely. Greets the guest in their language, reads menu items, takes the full order, translates everything for the server. No awkward moments. No lost sales.</div>
+        </div>
+        <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:16px;">
+          <div style="font-size:20px;margin-bottom:8px;">💡</div>
+          <div style="font-size:13px;font-weight:500;margin-bottom:6px;">Upsell Intelligence</div>
+          <div style="font-size:12px;color:var(--gray);line-height:1.7;">Every order triggers a suggestion shown privately to the server: "Add lobster tail +$18 · Upgrade to Wagyu +$24 · Wine pairing: Cabernet $12/glass." The server makes the suggestion naturally. Guest says yes. Revenue increases without pressure.</div>
+        </div>
+        <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:16px;">
+          <div style="font-size:20px;margin-bottom:8px;">✅</div>
+          <div style="font-size:13px;font-weight:500;margin-bottom:6px;">Server Verification</div>
+          <div style="font-size:12px;color:var(--gray);line-height:1.7;">Server reviews the complete table order on screen — every seat, every item, every modification — and confirms with one tap. Order fires to kitchen exactly right. Zero errors. Zero voids. Zero remakes.</div>
+        </div>
+        <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:16px;">
+          <div style="font-size:20px;margin-bottom:8px;">🔗</div>
+          <div style="font-size:13px;font-weight:500;margin-bottom:6px;">Feeds the Entire System</div>
+          <div style="font-size:12px;color:var(--gray);line-height:1.7;">Every confirmed order fires to the KDS, updates Sharkey AI's projected usage for the night, feeds the Ordering Agent's calculations, and flows into the Cost Agent's real-time food cost tracking.</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="tech-robotics" class="tdv">
+      <button class="bl" onclick="closeTech()">← Back to Technology</button>
+      <div class="ey" style="color:#c4b5fd;">Sharkey Robotics™</div>
+      <h2 class="pt" style="color:#c4b5fd;">One Robot.<br>Three Jobs.<br>24 Hours.</h2>
+      <p class="ps">The humanoid robot that makes the autonomous restaurant physically real. Receiving, running, and inventory — all in one unit.</p>
+      <div style="background:var(--navy2);border:1px solid rgba(124,58,237,0.2);border-radius:8px;overflow:hidden;margin-bottom:20px;">
+        <div style="display:grid;grid-template-columns:120px 1fr;">
+          <div style="background:var(--navy3);padding:14px;font-family:var(--font-mono);font-size:11px;color:var(--gold);border-bottom:1px solid var(--border);display:flex;align-items:center;">6:00am–8:00am</div>
+          <div style="padding:14px;border-bottom:1px solid var(--border);">
+            <div style="font-size:12px;font-weight:600;color:#60a5fa;margin-bottom:4px;">📦 RECEIVING MODE</div>
+            <div style="font-size:11px;color:var(--gray);line-height:1.6;">Unload truck. Read every label — verify product name, weight, pack size against PO. Reject wrong product, short weights, temperature violations. Scan every case into Intellishelf. Carry to assigned shelf. Full delivery report sent to manager.</div>
+          </div>
+          <div style="background:var(--navy3);padding:14px;font-family:var(--font-mono);font-size:11px;color:var(--gold);border-bottom:1px solid var(--border);display:flex;align-items:center;">8:00am–Close</div>
+          <div style="padding:14px;border-bottom:1px solid var(--border);">
+            <div style="font-size:12px;font-weight:600;color:var(--gold);margin-bottom:4px;">🏃 RUNNER BOT MODE</div>
+            <div style="font-size:11px;color:var(--gray);line-height:1.6;">Stationed in storage. Scans every item as kitchen pulls from shelves. Detects unscanned removals — flags immediately. Restocks shelves as needed. Maintains real-time inventory accuracy throughout service.</div>
+          </div>
+          <div style="background:var(--navy3);padding:14px;font-family:var(--font-mono);font-size:11px;color:var(--gold);border-bottom:1px solid var(--border);display:flex;align-items:center;">Close–3:00am</div>
+          <div style="padding:14px;border-bottom:1px solid var(--border);">
+            <div style="font-size:12px;font-weight:600;color:var(--gray);margin-bottom:4px;">🔋 CHARGING & STANDBY</div>
+            <div style="font-size:11px;color:var(--gray);line-height:1.6;">Charging cycle. System runs daily reconciliation. Agents analyze the day's numbers. Ordering agent prepares next truck order recommendation.</div>
+          </div>
+          <div style="background:var(--navy3);padding:14px;font-family:var(--font-mono);font-size:11px;color:var(--gold);display:flex;align-items:center;">3:00am–6:00am</div>
+          <div style="padding:14px;">
+            <div style="font-size:12px;font-weight:600;color:var(--green2);margin-bottom:4px;">🤖 INVENTORY BOT MODE</div>
+            <div style="font-size:11px;color:var(--gray);line-height:1.6;">Full physical count of entire restaurant. Every shelf, cooler, freezer, dry storage. Opens doors, counts cases, photographs items, AI counts from images. By 6am — verified accurate opening count for every single item.</div>
+          </div>
+        </div>
+      </div>
+      <div style="background:var(--navy2);border:1px solid rgba(124,58,237,0.2);border-radius:8px;padding:18px;">
+        <div class="badge badge-purple" style="margin-bottom:8px;">Hardware Partnership</div>
+        <div style="font-size:13px;font-weight:500;margin-bottom:6px;">Chef Friend — Humanoid Builder</div>
+        <div style="font-size:12px;color:var(--gray);line-height:1.7;">Old chef friend currently building humanoid robots for tree cutting. Identical hardware requirements — navigate physical environments, open and manipulate objects, work in tight spaces, operate autonomously overnight. His hardware + SRG's software and restaurant intelligence = natural founding partnership.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ACADEMY -->
+<div id="page-academy" class="page">
+  <div class="section">
+    <div style="background:linear-gradient(135deg,#1a1400,#0a1628);border:1px solid rgba(232,160,32,0.3);border-radius:10px;padding:32px;margin-bottom:24px;">
+      <div class="ey" style="color:var(--gold);">501(c)(3) Nonprofit · Building 3 · 455 Whitehall St SW</div>
+      <h1 class="pt">Sharkey Academy</h1>
+      <div style="font-size:16px;color:var(--gold);font-family:var(--font-display);font-style:italic;margin-bottom:10px;">We Produce Entrepreneurs.</div>
+      <p class="ps" style="max-width:700px;">Free education in culinary arts, business, AI, coding, robotics, and media for underserved youth. No student loans. No barriers. A direct pipeline to franchise ownership, tech careers, and entrepreneurship.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;">
+        <div style="padding:10px;background:rgba(232,160,32,0.08);border-radius:6px;text-align:center;"><div style="font-family:var(--font-display);font-size:20px;font-weight:600;color:var(--gold);">Free</div><div style="font-size:10px;color:var(--gray);">Enrollment</div></div>
+        <div style="padding:10px;background:rgba(232,160,32,0.08);border-radius:6px;text-align:center;"><div style="font-family:var(--font-display);font-size:20px;font-weight:600;color:var(--gold);">$0</div><div style="font-size:10px;color:var(--gray);">Student Loans</div></div>
+        <div style="padding:10px;background:rgba(232,160,32,0.08);border-radius:6px;text-align:center;"><div style="font-family:var(--font-display);font-size:20px;font-weight:600;color:var(--gold);">60</div><div style="font-size:10px;color:var(--gray);">Yr 1 Students</div></div>
+        <div style="padding:10px;background:rgba(232,160,32,0.08);border-radius:6px;text-align:center;"><div style="font-family:var(--font-display);font-size:20px;font-weight:600;color:var(--gold);">2–3yr</div><div style="font-size:10px;color:var(--gray);">Degree Track</div></div>
+      </div>
+    </div>
+
+    <div class="ey" style="color:var(--gray);margin-bottom:10px;">Who We Serve</div>
+    <div class="g3" style="margin-bottom:24px;">
+      <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:14px;"><div style="font-size:18px;margin-bottom:6px;">🏠</div><div style="font-size:13px;font-weight:500;margin-bottom:4px;">Foster Youth</div><div style="font-size:11px;color:var(--gray);line-height:1.6;">Young adults aging out of the foster care system — ages 17–25. Structured, safe environment with mentorship and direct job placement.</div></div>
+      <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:14px;"><div style="font-size:18px;margin-bottom:6px;">🌆</div><div style="font-size:13px;font-weight:500;margin-bottom:4px;">Underprivileged Youth</div><div style="font-size:11px;color:var(--gray);line-height:1.6;">Kids from underserved communities who need opportunity, direction, and a real path to ownership and career success.</div></div>
+      <div style="background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:14px;"><div style="font-size:18px;margin-bottom:6px;">🔄</div><div style="font-size:13px;font-weight:500;margin-bottom:4px;">System-Impacted Youth</div><div style="font-size:11px;color:var(--gray);line-height:1.6;">Young adults navigating the justice system who need a legitimate path forward — skills, credentials, and employers who will hire them.</div></div>
+    </div>
+
+    <div class="ey" style="color:var(--gray);margin-bottom:10px;">Programs & Certifications</div>
+    <div class="prog-grid" style="margin-bottom:24px;">
+      <div class="prog"><div class="prog-icon">🍳</div><div class="prog-name">Culinary Arts</div><div class="prog-desc">ACF-certified training. Hands-on in SRG's shared commercial kitchen. William is an ACF graduate.</div></div>
+      <div class="prog"><div class="prog-icon">💼</div><div class="prog-name">Business & Finance</div><div class="prog-desc">Personal and business credit, financial literacy, how to start and run a business. Restaurant ownership as the live case study.</div></div>
+      <div class="prog"><div class="prog-icon">💻</div><div class="prog-name">Coding & Technology</div><div class="prog-desc">Google Career Certificates. Python, AI tools, web development. Direct pipeline to Google and tech employer careers.</div></div>
+      <div class="prog"><div class="prog-icon">🪟</div><div class="prog-name">Microsoft Certification</div><div class="prog-desc">Microsoft AI and productivity certifications. Industry-recognized credentials that open corporate doors.</div></div>
+      <div class="prog"><div class="prog-icon">🤖</div><div class="prog-name">Robotics & Automation</div><div class="prog-desc">Hands-on training with Sharkey Robotics systems. Applied automation in real restaurant environments.</div></div>
+      <div class="prog"><div class="prog-icon">🧠</div><div class="prog-name">Sharkey AI Certification</div><div class="prog-desc">Certified operators of ExecuCore OS and Sharkey AI. Every graduate is qualified to run an SRG franchise location from Day 1.</div></div>
+      <div class="prog"><div class="prog-icon">🎬</div><div class="prog-name">Animation & Digital Media</div><div class="prog-desc">Media production, animation, digital content creation. Powered by Sharkey Media. Real projects, real portfolio.</div></div>
+      <div class="prog"><div class="prog-icon">🎨</div><div class="prog-name">Graphic Arts & Design</div><div class="prog-desc">Brand design, marketing materials, visual communication. Students work on real SRG brand projects.</div></div>
+      <div class="prog"><div class="prog-icon">🎤</div><div class="prog-name">Media & Communications</div><div class="prog-desc">Storytelling, media production, public speaking. Powered by Sharkey Media's in-house studio.</div></div>
+      <div class="prog"><div class="prog-icon">🌱</div><div class="prog-name">Life Skills & Leadership</div><div class="prog-desc">Financial literacy, professional development, leadership training. Preparing students for ownership not just employment.</div></div>
+    </div>
+
+    <div class="ey" style="color:var(--gray);margin-bottom:10px;">The ACF Apprenticeship Program</div>
+    <div style="background:var(--navy2);border:1px solid rgba(232,160,32,0.15);border-radius:8px;padding:20px;margin-bottom:20px;">
+      <div class="g3">
+        <div style="padding:12px;background:rgba(255,255,255,0.03);border-radius:6px;"><div style="font-size:12px;font-weight:500;margin-bottom:3px;">12–24 Month Training</div><div style="font-size:11px;color:var(--gray);">Structured program with hands-on experience inside SRG restaurants</div></div>
+        <div style="padding:12px;background:rgba(255,255,255,0.03);border-radius:6px;"><div style="font-size:12px;font-weight:500;margin-bottom:3px;">ACF Certification</div><div style="font-size:11px;color:var(--gray);">National industry credibility. American Culinary Federation — William is a graduate</div></div>
+        <div style="padding:12px;background:rgba(255,255,255,0.03);border-radius:6px;"><div style="font-size:12px;font-weight:500;margin-bottom:3px;">No Cost to Students</div><div style="font-size:11px;color:var(--gray);">Fully funded through grants and sponsorships. Zero financial barrier to entry</div></div>
+        <div style="padding:12px;background:rgba(255,255,255,0.03);border-radius:6px;"><div style="font-size:12px;font-weight:500;margin-bottom:3px;">Work While You Learn</div><div style="font-size:11px;color:var(--gray);">Students work in SRG restaurants during training. Income while building credentials</div></div>
+        <div style="padding:12px;background:rgba(255,255,255,0.03);border-radius:6px;"><div style="font-size:12px;font-weight:500;margin-bottom:3px;">Guaranteed Job Placement</div><div style="font-size:11px;color:var(--gray);">Direct hire into SRG concepts or partner establishments upon graduation</div></div>
+        <div style="padding:12px;background:rgba(255,255,255,0.03);border-radius:6px;"><div style="font-size:12px;font-weight:500;margin-bottom:3px;">Entrepreneurial Mentorship</div><div style="font-size:11px;color:var(--gray);">For graduates who want to launch their own restaurant — SRG as advisor and franchisor</div></div>
+      </div>
+    </div>
+
+    <div class="ey" style="color:var(--gray);margin-bottom:10px;">Graduate Outcomes</div>
+    <div class="g4" style="margin-bottom:24px;">
+      <div style="padding:14px;background:rgba(26,111,212,0.08);border:1px solid rgba(26,111,212,0.2);border-radius:6px;text-align:center;"><div style="font-size:18px;margin-bottom:6px;">🍽️</div><div style="font-size:12px;font-weight:500;margin-bottom:3px;">SRG Employment</div><div style="font-size:10px;color:var(--gray);">Direct hire into any SRG concept</div></div>
+      <div style="padding:14px;background:rgba(232,160,32,0.08);border:1px solid rgba(232,160,32,0.2);border-radius:6px;text-align:center;"><div style="font-size:18px;margin-bottom:6px;">🏪</div><div style="font-size:12px;font-weight:500;margin-bottom:3px;">Franchise Owner</div><div style="font-size:10px;color:var(--gray);">Own a Soul Bowl or Rise & Shine</div></div>
+      <div style="padding:14px;background:rgba(29,158,117,0.08);border:1px solid rgba(29,158,117,0.2);border-radius:6px;text-align:center;"><div style="font-size:18px;margin-bottom:6px;">💻</div><div style="font-size:12px;font-weight:500;margin-bottom:3px;">Tech Career</div><div style="font-size:10px;color:var(--gray);">Google · Microsoft · Tech partners</div></div>
+      <div style="padding:14px;background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);border-radius:6px;text-align:center;"><div style="font-size:18px;margin-bottom:6px;">🚀</div><div style="font-size:12px;font-weight:500;margin-bottom:3px;">Entrepreneur</div><div style="font-size:10px;color:var(--gray);">Launch own business with SRG as advisor</div></div>
+    </div>
+
+    <div class="ey" style="color:var(--gray);margin-bottom:10px;">Community Impact Targets</div>
+    <table class="tbl">
+      <thead><tr><th>Impact Area</th><th>Year 1</th><th>Year 3</th><th>Year 5</th></tr></thead>
+      <tbody>
+        <tr><td>Youth Trained</td><td>60</td><td>90+</td><td>150+</td></tr>
+        <tr><td>Jobs Created (Campus)</td><td>100+</td><td>150+</td><td>300+</td></tr>
+        <tr><td>Franchisees via Legacy Program</td><td>Launch</td><td>15 in pipeline</td><td>30+ owners</td></tr>
+        <tr><td>Google Certifications Issued</td><td>20+</td><td>60+</td><td>120+</td></tr>
+        <tr><td>Microsoft Certifications Issued</td><td>20+</td><td>60+</td><td>120+</td></tr>
+      </tbody>
+    </table>
+
+    <div style="background:var(--navy2);border:1px solid rgba(232,160,32,0.15);border-radius:8px;padding:20px;margin-bottom:14px;">
+      <div class="ey" style="color:var(--gold);margin-bottom:8px;">Funding Structure — Separate from SRG</div>
+      <div style="font-size:12px;color:var(--gray);line-height:1.7;">Sharkey Academy is a 501(c)(3) nonprofit — legally separate from SRG LLC. Financed through Invest Atlanta's 501(c)(3) bond program (~$3M for Building 3), grants, and sponsorships. William draws his salary as Executive Director from the Academy. CPA: Michy Lagrone (Iowa-based nonprofit specialist).</div>
+    </div>
+
+    <div style="background:linear-gradient(135deg,#1a1400,#0a1628);border:1px solid rgba(232,160,32,0.2);border-radius:8px;padding:20px;text-align:center;">
+      <div style="font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--gold);margin-bottom:8px;">"We don't just teach people to cook. We teach them to own."</div>
+      <div style="font-size:12px;color:var(--gray);line-height:1.7;">Every Sharkey Academy graduate walks out Google certified, Microsoft certified, ACF certified, and Sharkey AI certified — with a job, a franchise opportunity, or a tech career waiting for them.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACTS -->
+<div id="page-contacts" class="page">
+  <div class="section">
+    <div class="ey" style="color:var(--gold);">Key Contacts</div>
+    <h2 class="pt">Reference Directory</h2>
+
+    <div class="ey" style="color:var(--gray);margin-bottom:10px;">Property — King Industrial Realty</div>
+    <div class="contacts-grid" style="margin-bottom:24px;">
+      <div class="contact-card">
+        <div class="contact-group">Listing Agent</div>
+        <div class="contact-name">Steve Ratchford, SIOR, CCIM</div>
+        <div class="contact-role">Senior VP — King Industrial Realty</div>
+        <div class="contact-info">📞 404.942.2003<br>✉️ sratchford@kingindustrial.com</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-group">Listing Agent</div>
+        <div class="contact-name">Brian Bratton, SIOR</div>
+        <div class="contact-role">Senior VP — King Industrial Realty</div>
+        <div class="contact-info">📞 404.942.2028<br>✉️ bbratton@kingindustrial.com</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-group">Property</div>
+        <div class="contact-name">443–479 Whitehall St SW</div>
+        <div class="contact-role">Whitehall Street Assemblage — For Sale</div>
+        <div class="contact-info">📍 Atlanta, GA 30303<br>📐 2.31 acres · 66,614 sf<br>🏗 Zoning: I-1 · Opportunity Zone<br>📞 Main: 404.942.2000</div>
+      </div>
+    </div>
+
+    <div class="ey" style="color:var(--gray);margin-bottom:10px;">City & Funding</div>
+    <div class="contacts-grid" style="margin-bottom:24px;">
+      <div class="contact-card">
+        <div class="contact-group">Primary Funding Partner</div>
+        <div class="contact-name">Invest Atlanta</div>
+        <div class="contact-role">Lease Purchase Bond · 501(c)(3) Bonds · Job Grants</div>
+        <div class="contact-info">🌐 investatlanta.com<br>📍 133 Peachtree St NE, Atlanta<br>🤝 Internal champion confirmed<br>📋 Application in progress</div>
+      </div>
+    </div>
+
+    <div class="ey" style="color:var(--gray);margin-bottom:10px;">SRG Internal — Potential Hires</div>
+    <div style="background:rgba(232,160,32,0.06);border:1px solid rgba(232,160,32,0.15);border-radius:8px;padding:14px;margin-bottom:12px;font-size:11px;color:#f5c04a;">⚠️ All potential hires only. None formally approached or confirmed. Outreach begins post-funding.</div>
+    <div class="contacts-grid">
+      <div class="contact-card">
+        <div class="contact-group">Operations</div>
+        <div class="contact-name">Ken Allen</div>
+        <div class="contact-role">President of SRG</div>
+        <div class="contact-info" style="font-size:11px;">Multi-unit franchise systems expert. Highest-paid executive. Kevin and Marko report directly to Ken.</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-group">Hospitality</div>
+        <div class="contact-name">Brandy Booth</div>
+        <div class="contact-role">Director of Hospitality & Guest Experience</div>
+        <div class="contact-info" style="font-size:11px;">Country club F&B specialist. 5+ years with William. Creates and enforces SRG luxury service culture.</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-group">Finance — Academy</div>
+        <div class="contact-name">Michy Lagrone</div>
+        <div class="contact-role">CPA — Sharkey Academy</div>
+        <div class="contact-info" style="font-size:11px;">Nonprofit CPA specialist. Iowa-based hybrid. Academy accounting, audits, and grant reporting.</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-group">Real Estate</div>
+        <div class="contact-name">Stephan Richardson</div>
+        <div class="contact-role">Director of Real Estate Development</div>
+        <div class="contact-info" style="font-size:11px;">Developer relationships and strategic location identification for all SRG expansion.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer style="background:var(--navy2);border-top:1px solid var(--border);padding:24px;text-align:center;margin-top:40px;">
+  <div style="font-family:var(--font-display);font-size:18px;font-weight:600;margin-bottom:4px;">Sharkey Restaurant Group</div>
+  <div style="font-family:var(--font-mono);font-size:10px;color:var(--gray);letter-spacing:1.5px;text-transform:uppercase;">investinsrg.com · The Google of Restaurants™</div>
+</footer>
+
+<script>
+const concepts=[
+  {id:'chef-sharkeys',num:1,name:"Chef Sharkey's",cat:'premium',tag:'Fine Dining',tc:'tag-premium',tl:'"The Country Club Experience, For Everyone."',desc:"SRG's flagship fine dining on the 3rd floor of Building 1. Three environments — public dining, exclusive members area, and Kitchen Stadium where guests watch chefs perform live behind glass with DJ commentary. Kosher-style.",revenue:'High margin',franchise:'Flagship — not franchised',format:'Intimate + theatrical',diff:"Kitchen Stadium — chefs cook behind a glass showcase, mic'd with DJ commentary and close-up screens. Live culinary performance every service.",fran:'Flagship brand. Expansion to every major US city. Public and members dining scalable. Kitchen Stadium is the unique differentiator.'},
+  {id:'grand-ballroom',num:2,name:"Chef Sharkey's Grand Ballroom",cat:'premium',tag:'Events',tc:'tag-premium',tl:'"Where Elegance Meets Celebration."',desc:"Premier event venue on the 2nd floor of Building 1. Weddings, corporate galas, private events. Modular rooms, luxury staircase foyer, Bride & Groom Suites. 9,000+ sq ft.",revenue:'High margin',franchise:'Flagship — not franchised',format:'200+ capacity',diff:"Guests can hold their wedding reception in the Grand Ballroom and dine in Chef Sharkey's the same evening. Architecture-built upsell.",fran:"High-margin events with built-in cross-promotion to Chef Sharkey's. Not franchised — flagship only."},
+  {id:'soul-bowl',num:3,name:'Soul Bowl',cat:'core',tag:'Core',tc:'tag-core',tl:'"Soul Food, Reimagined."',desc:"Fast-casual soul food. 1st floor Building 1. Build custom bowls from Southern staples — rice, greens, mac & cheese, sweet potatoes, beef ribs, chicken, turkey wings. Kosher-style. Soul Suites inside every location.",revenue:'~$5M/unit',franchise:'Franchise-ready Day 1',format:'High volume',diff:'Soul Suites — semi-private spaces for studying, podcasting, meetings. Increases dwell time and positions Soul Bowl as a daily-use destination.',fran:'Franchise-ready Day 1. $5M annual revenue per unit target. 6% royalty. Scalable across HBCU corridors, urban centers, business districts.'},
+  {id:'rise-shine',num:4,name:'Rise & Shine',cat:'core',tag:'Core',tc:'tag-core',tl:'"Breakfast, Elevated."',desc:"Fast-casual breakfast. 1st floor Building 1. Anchored by signature Biscuit Bar. Southern-inspired breakfasts in a modern space. Strong catering demand for offices, schools, churches.",revenue:'$3–4M/unit',franchise:'Franchise-ready Day 1',format:'High volume',diff:'The Biscuit Bar — speed-first customization. Fast throughput across dine-in, grab-and-go, delivery, and catering.',fran:'Recession-resistant breakfast daypart. 5.5% royalty. Operationally simple and highly repeatable.'},
+  {id:'stackery',num:5,name:'Stackery',cat:'viral',tag:'Viral',tc:'tag-viral',tl:'"Culinary Creations, Stacked."',desc:"Viral-ready fast-casual. 1st floor Building 1. Home of the Shedeur Stack — Wagyu medallion, truffle butter, gold leaf. Every dish engineered for social media.",revenue:'High velocity',franchise:'Franchise-ready Day 1',format:'Medium volume',diff:'Every dish is engineered to be photographed. Celebrity-feature items create social media demand that markets the brand for free.',fran:'6% royalty. Designed for rapid national expansion through organic content virality.'},
+  {id:'stack-hause',num:6,name:'Stack Hause',cat:'viral',tag:'Viral',tc:'tag-viral',tl:'"Burgers, Without the Grease."',desc:"Premium air-fry burger concept. All items cooked in Rational ovens — zero grease, zero fryers. Beef, Wagyu, turkey, chicken, plant-based. Glass oven showcase lets guests watch food cook.",revenue:'Fast-casual',franchise:'Scalable',format:'Fast-casual',diff:'All air-fry, zero grease. Glass oven showcase. Health-forward differentiator in the premium burger space.',fran:'Lean kitchen footprint and strong unit economics.'},
+  {id:'sweetness',num:7,name:'Sweetness',cat:'premium',tag:'Legacy',tc:'tag-premium',tl:'"A Tribute to Legends."',desc:"Tribute restaurant honoring Walter Payton and Chef Charlie Trotter. Fine dining techniques made accessible. Tribute screens throughout. Culinary student training ground.",revenue:'Fine dining',franchise:'Flagship',format:'Intimate',diff:"Walter Payton highlights and Charlie Trotter culinary history create emotional resonance. Built-in cultural storytelling.",fran:"Flagship legacy brand building SRG's cultural credibility nationally."},
+  {id:'roux',num:8,name:"La'Rouxsianna",cat:'cuisine',tag:'Cuisine',tc:'tag-cuisine',tl:'"Where Roux Meets Louisiana."',desc:"Gumbo-focused Louisiana concept. Gumbo Burger, Jambalaya Loaded Fries, rotating rice-based dishes. First scalable gumbo brand nationally. Kosher-style.",revenue:'Fast-casual',franchise:'Scalable',format:'Medium volume',diff:"The Gumbo Burger — category-creating product. Familiar format, completely unexpected flavor.",fran:"Near-zero franchise representation for Louisiana cuisine nationally. La'Rouxsianna owns that white space."},
+  {id:'plantz',num:9,name:'Plantz Yeah Mon!',cat:'cuisine',tag:'Cuisine',tc:'tag-cuisine',tl:'"Vegan Roots, Island Vibes."',desc:"Jamaican-inspired vegan concept. Jerk jackfruit, curry chickpeas, plant-based stews, patties, bowls. 100% vegan, Kosher-style.",revenue:'Fast-casual',franchise:'Scalable',format:'Medium volume',diff:'Plant-based dining meets Caribbean cultural authenticity. The brand identity itself is viral.',fran:'Culturally-driven leader in the plant-based fast-casual space.'},
+  {id:'harvest',num:10,name:'The Harvest Table',cat:'experience',tag:'Experience',tc:'tag-experience',tl:'"A Feast at Every Table."',desc:"Family-style feast concept. Every table gets the full spread at once with refills. No menus — rotating banquet experience by monthly regional theme. Kosher-style.",revenue:'Full service',franchise:'Scalable',format:'Communal',diff:'No menus. No choosing. Full spread served together. Every visit feels like a holiday meal.',fran:'Monthly rotation creates built-in repeat visitation.'},
+  {id:'ribeyes',num:11,name:"Ribeye's",cat:'premium',tag:'Premium',tc:'tag-premium',tl:'"The Steakhouse for Everyone."',desc:"Family steakhouse. $1-per-ounce ribeye special plus Wagyu and tomahawk upsells. Vegetable, salad, and kid-friendly buffet.",revenue:'Volume + premium',franchise:'Scalable',format:'High volume',diff:'The $1/oz ribeye hook drives curiosity and trial across every demographic.',fran:'Strong unit economics and broad demographic reach.'},
+  {id:'crossroads',num:12,name:'Culinary Crossroads',cat:'cuisine',tag:'Cuisine',tc:'tag-cuisine',tl:'"Where Cultures Collide on a Plate."',desc:"Fusion concept merging Jamaican, Southern, and Vegan influences. Mid-sized casual dining. Kosher-style.",revenue:'Casual dining',franchise:'Scalable',format:'Medium volume',diff:'Every dish tells a story of where two or more culinary traditions created something new.',fran:'Broad appeal and strong catering potential.'},
+  {id:'amoure',num:13,name:'Amouré',cat:'experience',tag:'Experience',tc:'tag-experience',tl:'"Love Served by the Course."',desc:"Romantic dining. ~16 private suites each with unique theme — beach, sunset, city skyline. Grand piano foyer entrance, fireplace. Multi-course menus, curated wines.",revenue:'Premium',franchise:'Scalable',format:'Intimate suites',diff:'Every suite is a different world. Purpose-built for proposals, anniversaries, and milestone celebrations.',fran:'Special occasion dining is one of the most recession-resistant segments.'},
+  {id:'artpulence',num:14,name:'Artpulence',cat:'experience',tag:'Experience',tc:'tag-experience',tl:'"Where Dining Meets Art."',desc:"Restaurant and cultural hub hybrid. Led by Richard Wall III. Local artists paint or perform live during service. Artwork displayed and purchasable. Luxury grazing tables. Kosher-style.",revenue:'Event-based',franchise:'Scalable',format:'Gallery dining',diff:'The only dining experience that produces and sells original artwork at every service.',fran:'Functions as a community cultural hub generating goodwill and organic marketing.'},
+  {id:'luxpulence',num:15,name:'Luxpulence',cat:'premium',tag:'Premium',tc:'tag-premium',tl:'"Luxury on a Plate."',desc:"SRG's highest-tier luxury dining. Inspired by world-class steakhouse meets five-star hotel. Premium steak and seafood. RH Rooftop-level ambiance. Christian jazz. Dinner-only. Kosher-style.",revenue:'Ultra-premium',franchise:'Flagship',format:'Dinner-only',diff:'RH Rooftop-level design, Christian jazz. No other concept in Atlanta competes here.',fran:'Flagship luxury. Expands to wealthy metros after Atlanta launch.'},
+  {id:'cosecha',num:16,name:'Cosecha Mesa',cat:'cuisine',tag:'Cuisine',tc:'tag-cuisine',tl:'"Where Tradition Meets the Table."',desc:"Modern Mexican dining. Dual menu — Tex-Mex favorites and authentic regional Mexican dishes. Fajitas alongside birria, mole, tamales, pozole. Taco Bar Tuesdays. Wine-only. Kosher-style.",revenue:'Premium casual',franchise:'Scalable',format:'Full service',diff:'Two complete menu paths under one roof. Taco Bar Tuesdays create a weekly cultural event.',fran:'Broad demographic appeal. Weekly events drive consistent repeat traffic.'},
+  {id:'reserve',num:17,name:'The Reserve',cat:'premium',tag:'Premium',tc:'tag-premium',tl:'"Exclusivity Redefined."',desc:"Premium steakhouse. Country club ambiance. Exclusive members area, curated wine program, private dining rooms. Top of the steakhouse category.",revenue:'Premium',franchise:'Scalable',format:'Intimate',diff:'Country club feel with no membership barrier.',fran:'Targets premium steak segment in Sun Belt markets.'},
+  {id:'hot-spuds',num:18,name:'Hot Spuds',cat:'viral',tag:'Viral',tc:'tag-viral',tl:'"Potatoes, Reinvented."',desc:"Loaded baked potato concept. Over-the-top topping combinations for maximum visual impact. Fast-casual, high throughput.",revenue:'Fast-casual',franchise:'Franchise-ready',format:'High volume',diff:'The potato is the ultimate blank canvas — any flavor, any dietary need, highly photographable.',fran:'Simple supply chain, low food waste, high throughput. Most operationally lean franchise in portfolio.'},
+  {id:'essenza',num:19,name:'Essenza',cat:'cuisine',tag:'Cuisine',tc:'tag-cuisine',tl:'"Essence of Health."',desc:"Wellness café. Herbal drinks, teas, sea moss beverages, fresh bagels, protein bowls, light entrees. Café format. Kosher-style.",revenue:'Fast-casual',franchise:'Scalable',format:'Café',diff:'Sea moss drinks and herbal tonics alongside real food. Upscale wellness café.',fran:'Targets college towns and wellness-focused metros.'},
+  {id:'farm-heritage',num:20,name:'Farm Heritage x John Deere',cat:'experience',tag:'Experience',tc:'tag-experience',tl:'"Where Farming Meets the Table."',desc:"Farm-heritage restaurant in partnership with John Deere. Midwestern and Southern farm staples — pot roast, fried chicken, meatloaf. Tractors outside, retail inside, American farming history throughout.",revenue:'Full service',franchise:'Partnership',format:'Large format',diff:'John Deere partnership creates national brand recognition no independent concept can replicate.',fran:'Opens rural, suburban, and agricultural markets. Co-branding provides built-in marketing reach.'},
+  {id:'eclat',num:21,name:'Éclat de Feu',cat:'premium',tag:'Fine Dining',tc:'tag-premium',tl:'"The Brilliance of Fire. The Elegance of Dining."',desc:"Controlled fire and tableside artistry. French for Brilliance of Fire. Every course includes tableside flourishes — Caesar tossed live, flambé finishes, nitrogen-chilled desserts. Kosher-style.",revenue:'Fine dining',franchise:'Scalable',format:'Dinner-only',diff:'Old-world tableside traditions revived with modern design. Every table feels like a private performance.',fran:'Flagship in Atlanta, then NYC, Miami, Vegas, Dubai.'},
+  {id:'ember-oak',num:22,name:'Ember & Oak',cat:'premium',tag:'Polished Casual',tc:'tag-premium',tl:'"Where Fire Meets Flavor."',desc:"Dinner-only polished casual grill. Central open fire kitchen and live piano ambiance. Oak, stone, brass, blackened steel. Doors open 4pm. Staggered seatings.",revenue:'Polished casual',franchise:'Scalable',format:'Dinner-only',diff:'Live piano and open fire kitchen — simultaneously intimate and theatrical.',fran:"SRG's approachable luxury dinner brand. Scalable to every major city."},
+  {id:'quessa',num:23,name:'One Stop Quessa Spot',cat:'core',tag:'Core',tc:'tag-core',tl:'"Quesadillas · Nachos · Fresh-Cut Chips"',desc:"Premium fast-casual quesadilla concept. Chef-crafted or build-your-own quesadillas, loaded nachos, fresh-cut chips. Quessa Wall™ digital ordering centerpiece. 2,400–3,000 sq ft. Kosher-style.",revenue:'Fast-casual',franchise:'Franchise-ready',format:'Fast-casual',diff:'The Quessa Wall™ — digital ordering that makes the process part of the brand identity.',fran:'Small footprint, simple menu, strong unit economics. One of the easiest SRG franchises to operate.'},
+  {id:'concours',num:24,name:'The Concours',cat:'lifestyle',tag:'Lifestyle',tc:'tag-lifestyle',tl:'"Where Luxury Drives the Experience."',desc:"Private members club where car culture, fine dining, and lifestyle converge for corporate and business elite. Multiple dining concepts inside, car condos and private garages for rent, and the car wedding experience.",revenue:'Multi-stream',franchise:'Flagship',format:'Members club',diff:'The car wedding — exotic vehicles lined up as the bride walks the aisle. Every wedding goes viral and markets the brand nationally.',fran:'Multiple revenue streams — dining, memberships, car condo rentals, weddings, corporate events — 365 days a year.'}
+];
+
+const team=[
+  {i:'WS',n:'William Sharkey',r:'Founder & Chairman',note:'Close to 4 decades in F&B. ACF graduate. Finance degree, MBA. Architect of all 24 concepts. Salary drawn from Sharkey Academy as Executive Director.',c:'#1a6fd4'},
+  {i:'KA',n:'Ken Allen',r:'President of SRG',note:'Multi-unit franchise systems expert. Highest-paid executive. All department directors report through Ken.',c:'#e8a020'},
+  {i:'BB',n:'Brandy Booth',r:'Director of Hospitality & Guest Experience',note:'Country club F&B specialist. 5+ years with William. Creates and enforces luxury service culture across all concepts.',c:'#1d9e75'},
+  {i:'KV',n:'Kevin',r:'Director of Corporate Restaurant Operations',note:'Multi-brand GM background. Daily execution, SOP enforcement, labor controls.',c:'#7f77dd'},
+  {i:'MK',n:'Marko',r:'Director of Training & Systems Implementation',note:'10 yrs corporate restaurant mgmt. All FOH/BOH training and new unit rollout.',c:'#d85a30'},
+  {i:'WL',n:'Willie Lagrone',r:'Corporate Field Director — Culinary Execution',note:"William's cousin. 40+ yrs BOH. Field-based, ensures every plate to spec.",c:'#993556'},
+  {i:'BS',n:'Broderick Sharkey',r:'Corporate Field Director — Culinary Execution',note:"William's brother. 40+ yrs BOH. Kitchen discipline and food consistency.",c:'#0f6e56'},
+  {i:'EM',n:'Ed Moore',r:'Director of Human Resources',note:'Multi-unit HR background. All hiring, onboarding, training systems, internal policy.',c:'#185fa5'},
+  {i:'SW',n:'Shawn Wilson',r:'Director of Internal Compliance & Safety',note:'In-house Steritech — cleanliness, sanitation, brand standards, audits.',c:'#634806'},
+  {i:'RG',n:'Reggie',r:'Director of Multi-Brand Unit Performance',note:'Multi-brand GM background. Coaches unit-level GMs, resolves performance gaps.',c:'#3b6d11'},
+  {i:'SR',n:'Stephan Richardson',r:'Director of Real Estate Development',note:'Developer relationships and strategic location identification. Works directly with William and Ken.',c:'#533ab7'},
+  {i:'ML',n:'Michy Lagrone',r:'CPA — Sharkey Academy',note:'Nonprofit CPA. Iowa-based hybrid. Academy accounting compliance, audits, grant reporting.',c:'#888780'},
+  {i:'CG',n:'Christian Green',r:'Director of Tech & AI Integration (Tentative)',note:'Sharkey OS, AI dashboards, Sharkey Robotics, CrunchTime, franchise tech systems.',c:'#ba7517'}
+];
+
+function renderConcepts(filter){
+  const filtered=filter==='all'?concepts:concepts.filter(c=>c.cat===filter);
+  document.getElementById('cg').innerHTML=filtered.map(c=>`
+    <div class="card" onclick="showConcept('${c.id}')">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <div style="width:24px;height:24px;border-radius:50%;background:rgba(26,111,212,0.2);display:flex;align-items:center;justify-content:center;font-size:11px;color:#7ab4f5;font-weight:500;font-family:'DM Mono',monospace;">${c.num}</div>
+        <div class="ctag ${c.tc}">${c.tag}</div>
+      </div>
+      <div class="ct">${c.name}</div>
+      <div style="font-size:11px;color:var(--gold);margin-bottom:6px;font-style:italic;">${c.tl}</div>
+      <div class="cd">${c.desc.substring(0,100)}...</div>
+      <div style="display:flex;gap:16px;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);">
+        <div style="font-size:11px;"><div style="color:var(--gray);">Revenue</div><div style="font-weight:500;margin-top:1px;">${c.revenue}</div></div>
+        <div style="font-size:11px;"><div style="color:var(--gray);">Status</div><div style="font-weight:500;margin-top:1px;">${c.franchise}</div></div>
+      </div>
+      <span style="font-size:11px;color:var(--blue3);margin-top:8px;display:inline-block;">Full details →</span>
+    </div>`).join('');
+}
+
+function filterC(cat,btn){
+  document.querySelectorAll('.filt').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderConcepts(cat);
+}
+
+function showConcept(id){
+  const c=concepts.find(x=>x.id===id);
+  if(!c)return;
+  document.getElementById('clv').style.display='none';
+  document.getElementById('cdv').classList.add('active');
+  document.getElementById('dnum').textContent='#'+c.num;
+  document.getElementById('dtag').textContent=c.tag;
+  document.getElementById('dtag').className='ctag '+c.tc;
+  document.getElementById('dname').textContent=c.name;
+  document.getElementById('ddesc').innerHTML=`<em style="color:var(--gold);font-size:13px;">${c.tl}</em><br><br>${c.desc}`;
+  document.getElementById('dstats').innerHTML=`<div><div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--gold);">${c.revenue}</div><div style="font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:.8px;">Revenue</div></div><div><div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--gold);">${c.franchise}</div><div style="font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:.8px;">Status</div></div><div><div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--gold);">${c.format}</div><div style="font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:.8px;">Format</div></div>`;
+  document.getElementById('ddiff').textContent=c.diff;
+  document.getElementById('dfran').textContent=c.fran;
+}
+
+function closeConcept(){
+  document.getElementById('clv').style.display='block';
+  document.getElementById('cdv').classList.remove('active');
+}
+
+function renderTeam(){
+  document.getElementById('tg').innerHTML=team.map(t=>`
+    <div class="tc">
+      <div class="ta" style="background:${t.c};">${t.i}</div>
+      <div><div class="tn">${t.n}</div><div class="tr">${t.r}</div><div class="tnote">${t.note}</div></div>
+    </div>`).join('');
+}
+
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn,.mb').forEach(b=>b.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  const pages=['home','concepts','campus','team','financials','realestate','founders','contacts','technology','academy'];
+  const idx=pages.indexOf(id);
+  document.querySelectorAll('.nav-btn')[idx]?.classList.add('active');
+  document.querySelectorAll('.mb')[idx]?.classList.add('active');
+  window.scrollTo(0,0);
+  if(id==='concepts'){
+    document.getElementById('clv').style.display='block';
+    document.getElementById('cdv').classList.remove('active');
+  }
+  if(id==='technology'){
+    document.getElementById('tech-hub').style.display='block';
+    document.querySelectorAll('.tdv').forEach(d=>d.classList.remove('active'));
+  }
+}
+
+function showTech(id){
+  document.getElementById('tech-hub').style.display='none';
+  document.querySelectorAll('.tdv').forEach(d=>d.classList.remove('active'));
+  document.getElementById('tech-'+id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function closeTech(){
+  document.getElementById('tech-hub').style.display='block';
+  document.querySelectorAll('.tdv').forEach(d=>d.classList.remove('active'));
+  window.scrollTo(0,0);
+}
+
+renderConcepts('all');
+renderTeam();
+</script>
+</body>
+</html>
